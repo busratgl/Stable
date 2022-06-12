@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Stable.Entity
 {
-    public class Transaction : EntityBase
+    public class Transaction  : EntityBase
     {
         public string Description { get; set; }
         public Account Account { get; set; }
