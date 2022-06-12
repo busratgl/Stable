@@ -1,0 +1,12 @@
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\bin\Debug\net5.0\Stable.Entity.deps.json
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\bin\Debug\net5.0\Stable.Entity.dll
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\bin\Debug\net5.0\Stable.Entity.pdb
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.csproj.AssemblyReference.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.AssemblyInfoInputs.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.AssemblyInfo.cs
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.csproj.CoreCompileInputs.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.dll
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\refint\Stable.Entity.dll
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.pdb
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\ref\Stable.Entity.dll
