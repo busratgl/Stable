@@ -10,3 +10,6 @@ C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.
 C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\refint\Stable.Entity.dll
 C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.pdb
 C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\ref\Stable.Entity.dll
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\bin\Debug\net5.0\Stable.Core.dll
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\bin\Debug\net5.0\Stable.Core.pdb
+C:\Users\tuglu\source\repos\Stable\Stable.Entity\obj\Debug\net5.0\Stable.Entity.csproj.CopyComplete

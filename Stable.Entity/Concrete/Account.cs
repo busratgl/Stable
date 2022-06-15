@@ -1,4 +1,4 @@
-﻿using Stable.Core.Entity;
+﻿using Stable.Core.Entities.Abstract;
 using Stable.Core.Enums;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Entity
+namespace Stable.Entity.Concrete
 {
     public class Account : EntityBase
     {

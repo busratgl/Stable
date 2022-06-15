@@ -1,4 +1,5 @@
-﻿using Stable.Core.Entity;
+﻿using Microsoft.EntityFrameworkCore;
+using Stable.Core.Entities.Abstract;
 using Stable.Repository.Abstract;
 using Stable.Repository.Concrete.Context;
 using System;
@@ -18,39 +19,49 @@ namespace Stable.Repository.Concrete.EntityFramework
         {
             _stableDbContext = stableDbContext;
         }
-        public Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+
+        public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _stableDbContext.Set<T>().CountAsync(expression);
         }
 
-        public Task<int> CountAsync(Expression<Func<T, bool>> expression)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => { _stableDbContext.Set<T>().Remove(entity); });
+
         }
 
-        public Task<T> CreateAsync(T entity)
+        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> expression = null)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _stableDbContext.Set<T>();
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            return await query.ToListAsync();
         }
 
-        public Task DeleteAsync(T entity)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _stableDbContext.Set<T>();
+
+            return await query.SingleOrDefaultAsync(expression);
         }
 
-        public Task<T> GetAllAsync(Expression<Func<T, bool>> expression = null)
+        public async Task CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _stableDbContext.Set<T>().AddAsync(entity);
         }
 
-        public Task<T> GetAsync(Expression<Func<T, bool>> expression)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => { _stableDbContext.Set<T>().Update(entity); });
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _stableDbContext.Set<T>().AnyAsync(expression);
         }
     }
 }

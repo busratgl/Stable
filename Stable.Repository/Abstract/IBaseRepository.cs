@@ -1,4 +1,4 @@
-﻿using Stable.Core.Entity;
+﻿using Stable.Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,9 @@ namespace Stable.Repository.Abstract
     public interface IBaseRepository<T> where T : class, IEntity, new()
     {
         Task<T> GetAsync(Expression<Func<T, bool>> expression);
-        Task<T> GetAllAsync(Expression<Func<T, bool>> expression = null);
-        Task<T> CreateAsync(T entity);
-        Task<T> UpdateAsync(T entity);
+        Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> expression = null);
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task<int> CountAsync(Expression<Func<T, bool>> expression);

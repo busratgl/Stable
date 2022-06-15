@@ -1,0 +1,5 @@
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.AssemblyReference.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.AssemblyInfoInputs.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.AssemblyInfo.cs
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.CoreCompileInputs.cache
