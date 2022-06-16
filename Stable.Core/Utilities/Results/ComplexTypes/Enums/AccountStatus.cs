@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Stable.Core.Enums
 {
-    public enum AccountType
+    public enum AccountStatus
     {
-       Dolar = 0,
-       TL  = 1,
-       Gold= 2,
-       Euro= 3, 
+        Active = 0,
+        Passive = 1,
+        Suspended = 2,
+        Blocked = 3,
 
     }
 }

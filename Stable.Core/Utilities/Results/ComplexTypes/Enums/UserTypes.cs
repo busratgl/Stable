@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Stable.Core.Enums
 {
-    public enum AccountStatus
+    public enum UserTypes
     {
-        Active = 0,
-        Passive = 1,
-        Blocked = 2,
-
+        Person = 0,
+        Corporate = 1,
     }
 }

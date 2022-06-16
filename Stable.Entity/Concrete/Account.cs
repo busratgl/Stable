@@ -11,7 +11,8 @@ namespace Stable.Entity.Concrete
     public class Account : EntityBase
     {
         public string Name { get; set; }
-        public AccountType Type { get; set; }
+        public AccountType AccountType { get; set; }
+        public long AccountTypeId { get; set; }
         public AccountStatus Status { get; set; }
         public List<Transaction> Transactions { get; set; }
         public Person Person { get; set; }

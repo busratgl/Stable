@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Repository.Concrete
+namespace Stable.Repository.Concrete.Repositories
 {
-    public class EmailRepository : BaseRepository<Email>, IEmailRepository
+    public class BalanceRepository : BaseRepository<Balance>, IBalanceRepository
     {
-        public EmailRepository(StableDbContext stableDbContext) : base(stableDbContext)
+        public BalanceRepository(StableDbContext stableDbContext) : base(stableDbContext)
         {
         }
     }

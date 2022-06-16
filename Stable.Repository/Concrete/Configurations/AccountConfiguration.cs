@@ -16,11 +16,14 @@ namespace Stable.Repository.Concrete.Configurations
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Id).ValueGeneratedOnAdd();
             builder.Property(a => a.Name).IsRequired().HasMaxLength(150);
-            builder.Property(a => a.Type).IsRequired().HasColumnType("tinyint");
+            //builder.Property(a => a.Type).IsRequired().HasColumnType("tinyint");
             builder.Property(a => a.Status).IsRequired().HasColumnType("tinyint");
             builder.Property(a => a.CreatedDate).IsRequired();
             builder.Property(a => a.ModifiedDate).IsRequired();
             builder.Property(a => a.IsDeleted).IsRequired();
+
+
+            builder.HasOne<Person>(x => x.Person).WithMany(x => x.Accounts).HasForeignKey(x => x.PersonId);
 
             builder.ToTable("Accounts");
 

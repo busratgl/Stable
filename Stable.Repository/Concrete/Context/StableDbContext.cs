@@ -19,13 +19,11 @@ namespace Stable.Repository.Concrete.Context
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Password> Passwords { get; set; }
+        public DbSet<AccountType> AccountTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=TR-ADN-9332JL3\"SQLEXPRESS; Database = Stable; Trusted_Connection = True; Connect Timeout = 30; MultipleActiveResultSets = True;");
-
-
-
+            optionsBuilder.UseSqlServer(@"Server=TR-ADN-9332JL3\SQLEXPRESS; Database = Stable; Trusted_Connection = True; Connect Timeout = 30; MultipleActiveResultSets = True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,6 +32,11 @@ namespace Stable.Repository.Concrete.Context
             modelBuilder.ApplyConfiguration(new CorporateConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
             modelBuilder.ApplyConfiguration(new PersonConfiguration());
+            modelBuilder.ApplyConfiguration(new EmailConfiguration());
+            modelBuilder.ApplyConfiguration(new AddressConfiguration());
+            modelBuilder.ApplyConfiguration(new BalanceConfiguration());
+            modelBuilder.ApplyConfiguration(new PasswordConfiguration());
+            modelBuilder.ApplyConfiguration(new AccountTypeConfiguration());
 
 
             base.OnModelCreating(modelBuilder);

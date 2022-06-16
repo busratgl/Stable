@@ -9,5 +9,6 @@ namespace Stable.Entity.Concrete
 {
     public class Email: EntityBase
     {
+
     }
 }

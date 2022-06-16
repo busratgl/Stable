@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Repository.Concrete
+namespace Stable.Repository.Concrete.Repositories
 {
     public class PasswordRepository : BaseRepository<Password>, IPasswordRepository
     {

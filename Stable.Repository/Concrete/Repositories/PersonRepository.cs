@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Repository.Concrete
+namespace Stable.Repository.Concrete.Repositories
 {
-    public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
+    public class PersonRepository : BaseRepository<Person>, IPersonRepository
     {
-        public TransactionRepository(StableDbContext stableDbContext) : base(stableDbContext)
+        public PersonRepository(StableDbContext stableDbContext) : base(stableDbContext)
         {
         }
+
     }
 }

@@ -27,8 +27,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(p => p.ModifiedDate).IsRequired();
             builder.Property(p => p.IsDeleted).IsRequired();
 
-            //builder.HasMany(p=>p.Accounts).
-
             builder.ToTable("People");
 
 

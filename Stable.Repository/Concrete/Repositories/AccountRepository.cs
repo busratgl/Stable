@@ -5,16 +5,16 @@ using Stable.Repository.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Repository.Concrete
+namespace Stable.Repository.Concrete.Repositories
 {
-    public class PersonRepository : BaseRepository<Person>, IPersonRepository
+    public class AccountRepository : BaseRepository<Account>, IAccountRepository
     {
-        public PersonRepository(StableDbContext stableDbContext) : base(stableDbContext)
+        public AccountRepository(StableDbContext stableDbContext) : base(stableDbContext)
         {
         }
-
     }
 }
