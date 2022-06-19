@@ -1,4 +1,4 @@
-﻿,using Stable.Core.Utilities.Results.ComplexTypes.Enums;
+﻿using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

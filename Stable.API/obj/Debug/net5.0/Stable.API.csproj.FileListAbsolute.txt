@@ -26,3 +26,16 @@ C:\Users\tuglu\source\repos\Stable\Stable.API\obj\Debug\net5.0\refint\Stable.API
 C:\Users\tuglu\source\repos\Stable\Stable.API\obj\Debug\net5.0\Stable.API.pdb
 C:\Users\tuglu\source\repos\Stable\Stable.API\obj\Debug\net5.0\Stable.API.genruntimeconfig.cache
 C:\Users\tuglu\source\repos\Stable\Stable.API\obj\Debug\net5.0\ref\Stable.API.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Stable.Core.dll
+C:\Users\tuglu\source\repos\Stable\Stable.API\bin\Debug\net5.0\Stable.Core.pdb
