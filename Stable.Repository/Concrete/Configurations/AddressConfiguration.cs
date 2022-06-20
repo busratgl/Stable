@@ -13,16 +13,17 @@ namespace Stable.Repository.Concrete.Configurations
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.HasKey(ad => ad.Id);
-            builder.Property(ad => ad.Id).ValueGeneratedOnAdd();
-            builder.Property(ad => ad.CreatedDate).IsRequired();
-            builder.Property(ad => ad.ModifiedDate).IsRequired();
-            builder.Property(ad => ad.IsDeleted).IsRequired();
+            builder.HasKey(adr => adr.Id);
+            builder.Property(adr => adr.Id).ValueGeneratedOnAdd();
+            builder.Property(adr => adr.Name).IsRequired().HasMaxLength(150);
+            builder.Property(adr => adr.CreatedDate).IsRequired();
+            builder.Property(adr => adr.ModifiedDate).IsRequired();
+            builder.Property(adr => adr.IsDeleted).IsRequired();
+            builder.Property(adr => adr.IsActiveAddress).IsRequired();
 
-           
 
+            builder.HasOne<User>(adr => adr.User).WithMany(u => u.Addresses).HasForeignKey(adr => adr.UserId);
             builder.ToTable("Addresses");
-
         }
     }
 }

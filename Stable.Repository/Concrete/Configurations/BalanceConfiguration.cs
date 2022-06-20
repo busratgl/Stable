@@ -15,10 +15,11 @@ namespace Stable.Repository.Concrete.Configurations
         {
             builder.HasKey(b => b.Id);
             builder.Property(b => b.Id).ValueGeneratedOnAdd();
+            builder.Property(b => b.Amount);
             builder.Property(b => b.CreatedDate).IsRequired();
             builder.Property(b => b.ModifiedDate).IsRequired();
             builder.Property(b => b.IsDeleted).IsRequired();
-
+         
             builder.ToTable("Balances");
         }
     }

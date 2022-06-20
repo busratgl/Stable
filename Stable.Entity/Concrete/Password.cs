@@ -9,5 +9,10 @@ namespace Stable.Entity.Concrete
 {
     public class Password : EntityBase
     {
+        public byte[] PasswordHash { get; set; }
+        public bool IsActivePassword { get; set; } = true;
+        public User User { get; set; }
+        public long UserId { get; set; }
+
     }
 }

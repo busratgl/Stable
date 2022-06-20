@@ -11,15 +11,16 @@ namespace Stable.Entity.Concrete
     public class Account : EntityBase
     {
         public string Name { get; set; }
+        public long AccountNumber { get; set; }
         public AccountType AccountType { get; set; }
         public long AccountTypeId { get; set; }
         public AccountStatus Status { get; set; }
         public List<Transaction> Transactions { get; set; }
-        public Person Person { get; set; }
-        public long PersonId { get; set; }
-
-
-
+        public User User { get; set; }
+        public long UserId { get; set; }
+        public Balance Balance { get; set; }
+        public long BalanceId { get; set; }
+        public bool IsActiveAccount { get; set; }
 
     }
 }

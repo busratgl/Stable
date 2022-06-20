@@ -11,15 +11,16 @@ namespace Stable.Repository.Concrete.Context
 {
     public class StableDbContext : DbContext
     {
-        public DbSet<Person> People { get; set; }
+        public DbSet<IndividualUser> IndividualUsers { get; set; }
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<Corporate> Corporates { get; set; }
+        public DbSet<CorporateUser> CorporateUsers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Balance> Balances { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Password> Passwords { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,14 +30,15 @@ namespace Stable.Repository.Concrete.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
-            modelBuilder.ApplyConfiguration(new CorporateConfiguration());
+            modelBuilder.ApplyConfiguration(new CorporateUserConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
-            modelBuilder.ApplyConfiguration(new PersonConfiguration());
+            modelBuilder.ApplyConfiguration(new IndividualUserConfiguration());
             modelBuilder.ApplyConfiguration(new EmailConfiguration());
             modelBuilder.ApplyConfiguration(new AddressConfiguration());
             modelBuilder.ApplyConfiguration(new BalanceConfiguration());
             modelBuilder.ApplyConfiguration(new PasswordConfiguration());
             modelBuilder.ApplyConfiguration(new AccountTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
 
 
             base.OnModelCreating(modelBuilder);

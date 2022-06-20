@@ -16,11 +16,12 @@ namespace Stable.Repository.Concrete
         private AccountTypeRepository _accountTypeRepository;
         private AddressRepository _addressRepository;
         private BalanceRepository _balanceRepository;
-        private CorporateRepository _corporateRepository;
+        private CorporateUserRepository _corporateUserRepository;
         private EmailRepository _emailRepository;
         private PasswordRepository _passwordRepository;
-        private PersonRepository _personRepository;
+        private IndividualUserRepository _individualUserRepository;
         private TransactionRepository _transactionRepository;
+        private UserRepository _userRepository;
 
         public UnitOfWork(StableDbContext context)
         {
@@ -35,15 +36,18 @@ namespace Stable.Repository.Concrete
 
         public IBalanceRepository Balances => _balanceRepository ?? new BalanceRepository(_context);
 
-        public ICorporateRepository Corporates => _corporateRepository ?? new CorporateRepository(_context);
-
         public IEmailRepository Emails => _emailRepository ?? new EmailRepository(_context);
 
         public IPasswordRepository Passwords => _passwordRepository ?? new PasswordRepository(_context);
-
-        public IPersonRepository People => _personRepository ?? new PersonRepository(_context);
+        public IUserRepository Users => _userRepository ?? new UserRepository(_context);
 
         public ITransactionRepository Transactions => _transactionRepository ?? new TransactionRepository(_context);
+
+        public ICorporateUserRepository CorporateUsers => _corporateUserRepository ?? new CorporateUserRepository(_context);
+
+        public IIndividualUserRepository IndividualUsers => _individualUserRepository ?? new IndividualUserRepository(_context);
+
+
 
         public async ValueTask DisposeAsync()
         {

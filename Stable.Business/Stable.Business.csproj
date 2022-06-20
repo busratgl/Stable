@@ -5,9 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Abstract\**" />
-    <EmbeddedResource Remove="Abstract\**" />
-    <None Remove="Abstract\**" />
+    <ProjectReference Include="..\Stable.Entity\Stable.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstract\" />
   </ItemGroup>
 
 </Project>

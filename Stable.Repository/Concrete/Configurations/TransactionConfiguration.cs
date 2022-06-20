@@ -20,7 +20,7 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(t => t.ModifiedDate).IsRequired();
             builder.Property(t => t.IsDeleted).IsRequired();
 
-
+            builder.HasOne<Account>(t => t.Account).WithMany(a => a.Transactions).HasForeignKey(t => t.Id);
             builder.ToTable("Transactions");
 
         }

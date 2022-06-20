@@ -15,19 +15,21 @@ namespace Stable.Repository.Concrete.Configurations
         {
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Id).ValueGeneratedOnAdd();
+            builder.Property(a => a.AccountNumber).IsRequired().HasMaxLength(34);
+            builder.HasIndex(a => a.AccountNumber).IsUnique();
             builder.Property(a => a.Name).IsRequired().HasMaxLength(150);
-            //builder.Property(a => a.Type).IsRequired().HasColumnType("tinyint");
             builder.Property(a => a.Status).IsRequired().HasColumnType("tinyint");
+            builder.Property(a => a.Transactions).IsRequired();
+            builder.Property(a => a.IsActiveAccount).IsRequired();
             builder.Property(a => a.CreatedDate).IsRequired();
             builder.Property(a => a.ModifiedDate).IsRequired();
             builder.Property(a => a.IsDeleted).IsRequired();
 
 
-            builder.HasOne<Person>(x => x.Person).WithMany(x => x.Accounts).HasForeignKey(x => x.PersonId);
-
+            builder.HasOne<User>(a => a.User).WithMany(u => u.Accounts).HasForeignKey(a => a.UserId);
+            builder.HasOne<Balance>(a => a.Balance).WithOne(b => b.Account).HasForeignKey<Account>(a => a.BalanceId);
+            builder.HasOne<AccountType>(a => a.AccountType).WithMany(acty => acty.Accounts).HasForeignKey(a => a.AccountTypeId);
             builder.ToTable("Accounts");
-
-
         }
     }
 }

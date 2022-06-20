@@ -12,11 +12,13 @@ namespace Stable.Repository.Abstract
         IAccountTypeRepository AccountTypes { get; }
         IAddressRepository Addresses { get; }
         IBalanceRepository Balances { get; }
-        ICorporateRepository Corporates { get; }
+        ICorporateUserRepository CorporateUsers { get; }
         IEmailRepository Emails { get; }
         IPasswordRepository Passwords { get; }
-        IPersonRepository People { get; } //_unitOfWork.People.CreateAsync(person); //_unitOfWork.SaveAsync();
+        IIndividualUserRepository IndividualUsers { get; } //_unitOfWork.People.CreateAsync(person); //_unitOfWork.SaveAsync();
         ITransactionRepository Transactions { get; }
+        IUserRepository Users { get; }
+
 
         Task<int> SaveAsync();
 

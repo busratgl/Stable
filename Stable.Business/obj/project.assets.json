@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "Stable.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Stable.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Stable.Core.dll": {}
+        }
+      },
+      "Stable.Entity/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Stable.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Stable.Entity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Stable.Entity.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Stable.Core/1.0.0": {
+      "type": "project",
+      "path": "../Stable.Core/Stable.Core.csproj",
+      "msbuildProject": "../Stable.Core/Stable.Core.csproj"
+    },
+    "Stable.Entity/1.0.0": {
+      "type": "project",
+      "path": "../Stable.Entity/Stable.Entity.csproj",
+      "msbuildProject": "../Stable.Entity/Stable.Entity.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "Stable.Entity >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\tuglu\\.nuget\\packages\\": {}
@@ -33,7 +70,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj": {
+              "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

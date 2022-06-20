@@ -18,7 +18,9 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(pw => pw.CreatedDate).IsRequired();
             builder.Property(pw => pw.ModifiedDate).IsRequired();
             builder.Property(pw => pw.IsDeleted).IsRequired();
+            builder.Property(pw => pw.IsActivePassword).IsRequired();
 
+            builder.HasOne<User>(pw => pw.User).WithMany(u => u.Passwords).HasForeignKey(pw => pw.UserId);
             builder.ToTable("Passwords");
         }
     }
