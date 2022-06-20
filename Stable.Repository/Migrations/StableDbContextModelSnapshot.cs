@@ -26,11 +26,22 @@ namespace Stable.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AccountNumber")
+                        .IsRequired()
+                        .HasMaxLength(34)
+                        .HasColumnType("nvarchar(34)");
+
                     b.Property<long>("AccountTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("BalanceId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActiveAccount")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -43,18 +54,23 @@ namespace Stable.Repository.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<long>("PersonId")
-                        .HasColumnType("bigint");
-
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountTypeId")
+                    b.HasIndex("AccountNumber")
                         .IsUnique();
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("AccountTypeId");
+
+                    b.HasIndex("BalanceId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Accounts");
                 });
@@ -80,14 +96,19 @@ namespace Stable.Repository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long?>("PersonId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonId");
+                    b.ToTable("AccountTypes");
 
-                    b.ToTable("Account Types");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedDate = new DateTime(2022, 6, 20, 22, 57, 16, 521, DateTimeKind.Local).AddTicks(215),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2022, 6, 20, 22, 57, 16, 522, DateTimeKind.Local).AddTicks(2992),
+                            Name = "Dolar"
+                        });
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Address", b =>
@@ -97,8 +118,14 @@ namespace Stable.Repository.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AddressText")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActiveAddress")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -106,7 +133,17 @@ namespace Stable.Repository.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
                 });
@@ -117,6 +154,9 @@ namespace Stable.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -132,15 +172,12 @@ namespace Stable.Repository.Migrations
                     b.ToTable("Balances");
                 });
 
-            modelBuilder.Entity("Stable.Entity.Concrete.Corporate", b =>
+            modelBuilder.Entity("Stable.Entity.Concrete.CorporateUser", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -159,12 +196,18 @@ namespace Stable.Repository.Migrations
                     b.Property<long>("TaxNumber")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TaxNumber")
                         .IsUnique();
 
-                    b.ToTable("Corporates");
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("CorporateUsers");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Email", b =>
@@ -177,55 +220,39 @@ namespace Stable.Repository.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsActiveEmailAddress")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("EmailAddress")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Emails");
                 });
 
-            modelBuilder.Entity("Stable.Entity.Concrete.Password", b =>
+            modelBuilder.Entity("Stable.Entity.Concrete.IndividualUser", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Passwords");
-                });
-
-            modelBuilder.Entity("Stable.Entity.Concrete.Person", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("AccountId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("AccountTypeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime?>("BirthDate")
                         .IsRequired()
@@ -233,11 +260,6 @@ namespace Stable.Repository.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("nvarchar(75)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -258,25 +280,58 @@ namespace Stable.Repository.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdentityNumber")
                         .IsUnique();
 
-                    b.ToTable("People");
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("IndividualUsers");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.Password", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActivePassword")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PasswordText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Passwords");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Transaction", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<long>("AccountId")
                         .HasColumnType("bigint");
@@ -297,42 +352,122 @@ namespace Stable.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
-
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Account", b =>
                 {
                     b.HasOne("Stable.Entity.Concrete.AccountType", "AccountType")
-                        .WithOne("Account")
-                        .HasForeignKey("Stable.Entity.Concrete.Account", "AccountTypeId")
+                        .WithMany("Accounts")
+                        .HasForeignKey("AccountTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Stable.Entity.Concrete.Person", "Person")
+                    b.HasOne("Stable.Entity.Concrete.Balance", "Balance")
+                        .WithOne("Account")
+                        .HasForeignKey("Stable.Entity.Concrete.Account", "BalanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
                         .WithMany("Accounts")
-                        .HasForeignKey("PersonId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AccountType");
 
-                    b.Navigation("Person");
+                    b.Navigation("Balance");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Stable.Entity.Concrete.AccountType", b =>
+            modelBuilder.Entity("Stable.Entity.Concrete.Address", b =>
                 {
-                    b.HasOne("Stable.Entity.Concrete.Person", null)
-                        .WithMany("AccountTypes")
-                        .HasForeignKey("PersonId");
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.CorporateUser", b =>
+                {
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
+                        .WithOne("CorporateUser")
+                        .HasForeignKey("Stable.Entity.Concrete.CorporateUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.Email", b =>
+                {
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
+                        .WithMany("Emails")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.IndividualUser", b =>
+                {
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
+                        .WithOne("IndividualUser")
+                        .HasForeignKey("Stable.Entity.Concrete.IndividualUser", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.Password", b =>
+                {
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
+                        .WithMany("Passwords")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Transaction", b =>
                 {
                     b.HasOne("Stable.Entity.Concrete.Account", "Account")
                         .WithMany("Transactions")
-                        .HasForeignKey("AccountId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -346,14 +481,27 @@ namespace Stable.Repository.Migrations
 
             modelBuilder.Entity("Stable.Entity.Concrete.AccountType", b =>
                 {
+                    b.Navigation("Accounts");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.Balance", b =>
+                {
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("Stable.Entity.Concrete.Person", b =>
+            modelBuilder.Entity("Stable.Entity.Concrete.User", b =>
                 {
                     b.Navigation("Accounts");
 
-                    b.Navigation("AccountTypes");
+                    b.Navigation("Addresses");
+
+                    b.Navigation("CorporateUser");
+
+                    b.Navigation("Emails");
+
+                    b.Navigation("IndividualUser");
+
+                    b.Navigation("Passwords");
                 });
 #pragma warning restore 612, 618
         }

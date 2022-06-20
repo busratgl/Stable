@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Stable.Core.Enums
 {
-    public enum UserTypes
+    public enum UserType
     {
-        Person = 0,
+        Individual = 0,
         Corporate = 1,
     }
 }

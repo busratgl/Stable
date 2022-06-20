@@ -25,8 +25,8 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(iu => iu.IsDeleted).IsRequired();
 
 
-            builder.HasOne<User>(iu => iu.User).WithMany(u => u.IndividualUsers).HasForeignKey(iu => iu.UserId);
-            builder.ToTable("People");
+            builder.HasOne<User>(iu => iu.User).WithOne(u => u.IndividualUser).HasForeignKey<IndividualUser>(ui => ui.UserId);
+            builder.ToTable("IndividualUsers");
         }
     }
 }

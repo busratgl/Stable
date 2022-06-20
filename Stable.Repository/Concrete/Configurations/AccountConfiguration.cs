@@ -19,7 +19,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.HasIndex(a => a.AccountNumber).IsUnique();
             builder.Property(a => a.Name).IsRequired().HasMaxLength(150);
             builder.Property(a => a.Status).IsRequired().HasColumnType("tinyint");
-            builder.Property(a => a.Transactions).IsRequired();
             builder.Property(a => a.IsActiveAccount).IsRequired();
             builder.Property(a => a.CreatedDate).IsRequired();
             builder.Property(a => a.ModifiedDate).IsRequired();

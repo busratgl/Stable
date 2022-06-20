@@ -22,7 +22,7 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(cu => cu.ModifiedDate).IsRequired();
             builder.Property(cu => cu.IsDeleted).IsRequired();
 
-            builder.HasOne<User>(cu => cu.User).WithMany(u => u.CorporateUsers).HasForeignKey(cu => cu.UserId);
+            builder.HasOne<User>(cu => cu.User).WithOne(cu => cu.CorporateUser).HasForeignKey<CorporateUser>(cu => cu.UserId);
             builder.ToTable("CorporateUsers");
         }
     }

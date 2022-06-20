@@ -16,6 +16,7 @@ namespace Stable.Repository.Concrete.Configurations
             builder.HasKey(pw => pw.Id);
             builder.Property(pw => pw.Id).ValueGeneratedOnAdd();
             builder.Property(pw => pw.CreatedDate).IsRequired();
+            builder.Property(pw => pw.PasswordText).IsRequired();
             builder.Property(pw => pw.ModifiedDate).IsRequired();
             builder.Property(pw => pw.IsDeleted).IsRequired();
             builder.Property(pw => pw.IsActivePassword).IsRequired();

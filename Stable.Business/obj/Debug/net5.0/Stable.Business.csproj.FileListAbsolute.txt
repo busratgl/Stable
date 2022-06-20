@@ -15,3 +15,5 @@ C:\Users\tuglu\source\repos\Stable\Stable.Business\bin\Debug\net5.0\Stable.Entit
 C:\Users\tuglu\source\repos\Stable\Stable.Business\bin\Debug\net5.0\Stable.Entity.pdb
 C:\Users\tuglu\source\repos\Stable\Stable.Business\bin\Debug\net5.0\Stable.Core.pdb
 C:\Users\tuglu\source\repos\Stable\Stable.Business\obj\Debug\net5.0\Stable.Business.csproj.CopyComplete
+C:\Users\tuglu\source\repos\Stable\Stable.Business\bin\Debug\net5.0\Stable.Repository.dll
+C:\Users\tuglu\source\repos\Stable\Stable.Business\bin\Debug\net5.0\Stable.Repository.pdb

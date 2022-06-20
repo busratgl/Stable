@@ -10,6 +10,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Processes;
+using Stable.Repository.Abstract;
+using Stable.Repository.Concrete;
+using Stable.Repository.Concrete.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +35,10 @@ namespace Stable.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUserRegisterProcess, UserRegisterProcess>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<StableDbContext>();
+
             var key = Encoding.ASCII.GetBytes("ajagfiajkfhgafuajkfgafafkajfgk");
 
             services.AddAuthentication(options =>

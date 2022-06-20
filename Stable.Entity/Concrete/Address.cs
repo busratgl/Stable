@@ -10,9 +10,9 @@ namespace Stable.Entity.Concrete
     public class Address : EntityBase
     {
         public string Name { get; set; }
+        public string AddressText { get; set; }
         public User User { get; set; }
         public long UserId { get; set; }
-        public List<Address> Addresses { get; set; }
-        public bool IsActiveAddress { get; set; } = true;
+        public bool IsActiveAddress { get; set; }
     }
 }

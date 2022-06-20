@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Business.Responses
+namespace Stable.Business.Concrete.Responses
 {
     public class UserLoginDto
     {

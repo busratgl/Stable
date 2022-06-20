@@ -11,6 +11,5 @@ namespace Stable.Entity.Concrete
     {
         public decimal Amount { get; set; }
         public Account Account { get; set; }
-        public long AccountId { get; set; }
     }
 }

@@ -20,7 +20,15 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(act => act.ModifiedDate).IsRequired();
             builder.Property(act => act.IsDeleted).IsRequired();
 
-            builder.ToTable("Account Types");
+            builder.ToTable("AccountTypes");
+
+
+            builder.HasData(new AccountType()
+            {
+                Id = 1,
+                Name = "Dolar",
+
+            });
         }
     }
 }

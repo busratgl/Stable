@@ -16,7 +16,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Id).ValueGeneratedOnAdd();
             builder.Property(u => u.PhoneNumber).IsRequired().HasMaxLength(15);
-            builder.Property(u => u.Balance);
             builder.Property(u => u.CreatedDate).IsRequired();
             builder.Property(u => u.ModifiedDate).IsRequired();
             builder.Property(u => u.IsDeleted).IsRequired();

@@ -6,10 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Stable.Entity\Stable.Entity.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Abstract\" />
+    <ProjectReference Include="..\Stable.Repository\Stable.Repository.csproj" />
   </ItemGroup>
 
 </Project>

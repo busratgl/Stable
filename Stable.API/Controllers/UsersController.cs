@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Stable.API.Helpers;
+using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Processes;
+using Stable.Business.Concrete.Responses;
 using Stable.Business.Requests;
-using Stable.Business.Responses;
 using Stable.Core.Utilities.Results.Concrete;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Stable.API.Controllers
 {
@@ -11,10 +14,20 @@ namespace Stable.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        [HttpPost("register")]
-        public Result Register([FromBody]UserRegisterRequest userRegisterRequest, CancellationToken cancellationToken)
+        private readonly IUserRegisterProcess _userRegisterProcess;
+
+        public UsersController(IUserRegisterProcess userRegisterProcess)
         {
-            return new Result(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success);
+            _userRegisterProcess = userRegisterProcess;
+
+        }
+
+
+        [HttpPost("register")]
+        public async Task<DataResult<UserRegisterDto>> Register([FromBody] UserRegisterRequest userRegisterRequest, CancellationToken cancellationToken)
+        {
+            var result = await _userRegisterProcess.ExecuteAsync(userRegisterRequest, cancellationToken);
+            return new DataResult<UserRegisterDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, result);
         }
 
         [HttpPost("login")]
@@ -22,7 +35,7 @@ namespace Stable.API.Controllers
         {
 
             var isExist = false;
-            if(!isExist)
+            if (!isExist)
             {
                 return new DataResult<UserLoginDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Error, null);
             }
