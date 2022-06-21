@@ -1,14 +1,11 @@
 ﻿using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Stable.Core.Utilities.Results.Concrete
 {
     public class DataResult<T> : IDataResult<T>
     {
+
         public DataResult(ResultStatus resultStatus, T data)
         {
             ResultStatus = resultStatus;

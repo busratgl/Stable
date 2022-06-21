@@ -1,4 +1,5 @@
 ﻿using Stable.Core.Entities.Abstract;
+using Stable.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Stable.Entity.Concrete
         public List<Password> Passwords { get; set; }
         public CorporateUser CorporateUser { get; set; }
         public IndividualUser IndividualUser { get; set; }
+        public UserType UserType { get; set; }
 
     }
 }

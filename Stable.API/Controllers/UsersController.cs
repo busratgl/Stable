@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Stable.API.Helpers;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Stable.Business.Abstract.Processes;
 using Stable.Business.Concrete.Processes;
+using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses;
 using Stable.Business.Requests;
 using Stable.Core.Utilities.Results.Concrete;
@@ -10,20 +11,21 @@ using System.Threading.Tasks;
 
 namespace Stable.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+
+    public class UsersController : BaseController
     {
         private readonly IUserRegisterProcess _userRegisterProcess;
+        private readonly IUserLoginProcess _userLoginProcess;
 
-        public UsersController(IUserRegisterProcess userRegisterProcess)
+        public UsersController(IUserRegisterProcess userRegisterProcess, IUserLoginProcess userLoginProcess)
         {
             _userRegisterProcess = userRegisterProcess;
+            _userLoginProcess = userLoginProcess;
 
         }
 
-
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<DataResult<UserRegisterDto>> Register([FromBody] UserRegisterRequest userRegisterRequest, CancellationToken cancellationToken)
         {
             var result = await _userRegisterProcess.ExecuteAsync(userRegisterRequest, cancellationToken);
@@ -31,27 +33,11 @@ namespace Stable.API.Controllers
         }
 
         [HttpPost("login")]
-        public DataResult<UserLoginDto> Login(CancellationToken cancellationToken)
+        [AllowAnonymous]
+        public async Task<DataResult<UserLoginDto>> Login([FromBody] UserLoginRequest userLoginRequest, CancellationToken cancellationToken)
         {
-
-            var isExist = false;
-            if (!isExist)
-            {
-                return new DataResult<UserLoginDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Error, null);
-            }
-
-
-
-            var token = TokenHelper.GenerateAccessToken();
-            var userLoginDto = new UserLoginDto()
-            {
-                Token = token
-            };
-
-            return new DataResult<UserLoginDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, userLoginDto);
-
-
-
+            var result = await _userLoginProcess.ExecuteAsync(userLoginRequest, cancellationToken);
+            return new DataResult<UserLoginDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, result);
         }
     }
 }

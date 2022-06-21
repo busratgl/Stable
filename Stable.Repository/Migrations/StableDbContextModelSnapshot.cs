@@ -104,9 +104,9 @@ namespace Stable.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 6, 20, 22, 57, 16, 521, DateTimeKind.Local).AddTicks(215),
+                            CreatedDate = new DateTime(2022, 6, 21, 13, 59, 39, 301, DateTimeKind.Local).AddTicks(1409),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 20, 22, 57, 16, 522, DateTimeKind.Local).AddTicks(2992),
+                            ModifiedDate = new DateTime(2022, 6, 21, 13, 59, 39, 303, DateTimeKind.Local).AddTicks(813),
                             Name = "Dolar"
                         });
                 });
@@ -375,6 +375,9 @@ namespace Stable.Repository.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<byte>("UserType")
+                        .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 

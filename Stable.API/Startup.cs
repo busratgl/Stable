@@ -10,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Converters;
+using Stable.API.Middlewares;
 using Stable.Business.Abstract.Processes;
 using Stable.Business.Concrete.Processes;
 using Stable.Repository.Abstract;
@@ -19,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Stable.API
@@ -36,6 +39,7 @@ namespace Stable.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserRegisterProcess, UserRegisterProcess>();
+            services.AddScoped<IUserLoginProcess, UserLoginProcess>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<StableDbContext>();
 
@@ -57,6 +61,7 @@ namespace Stable.API
                     ValidateAudience = true,
                     ValidateIssuer = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                    RequireExpirationTime = true
                 };
             });
 
@@ -65,6 +70,7 @@ namespace Stable.API
             services.AddControllers().AddFluentValidation(x =>
             {
                 x.RegisterValidatorsFromAssemblyContaining<Startup>();
+
             });
 
             services.AddSwaggerGen(c =>
@@ -99,6 +105,8 @@ namespace Stable.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -113,6 +121,8 @@ namespace Stable.API
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

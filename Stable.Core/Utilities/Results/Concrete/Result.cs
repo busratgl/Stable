@@ -1,4 +1,5 @@
-﻿using Stable.Core.Utilities.Results.Abstract;
+﻿
+using Stable.Core.Utilities.Results.Abstract;
 using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,6 @@ namespace Stable.Core.Utilities.Results.Concrete
             Message = message;
             Exception = exception;
         }
-
 
 
         public ResultStatus ResultStatus { get; }
