@@ -26,7 +26,14 @@ namespace Stable.Repository.Concrete.Configurations
             builder.HasData(new AccountType()
             {
                 Id = 1,
-                Name = "Dolar",
+                Name = "Checking Account",
+
+            });
+
+            builder.HasData(new AccountType()
+            {
+                Id = 2,
+                Name = "Deposit Account",
 
             });
         }

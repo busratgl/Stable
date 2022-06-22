@@ -11,5 +11,7 @@ namespace Stable.Entity.Concrete
     {
         public decimal Amount { get; set; }
         public Account Account { get; set; }
+        public CurrencyType CurrencyType { get; set; }
+        public long CurrencyTypeId { get; set; }
     }
 }

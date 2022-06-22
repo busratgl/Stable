@@ -19,7 +19,8 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(b => b.CreatedDate).IsRequired();
             builder.Property(b => b.ModifiedDate).IsRequired();
             builder.Property(b => b.IsDeleted).IsRequired();
-         
+
+            builder.HasOne<CurrencyType>(b => b.CurrencyType).WithMany(c => c.Balances).HasForeignKey(b => b.CurrencyTypeId);
             builder.ToTable("Balances");
         }
     }

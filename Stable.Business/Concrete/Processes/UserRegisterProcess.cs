@@ -42,7 +42,6 @@ namespace Stable.Business.Concrete.Processes
                 IsActivePassword = true,
             };
 
-
             user.Passwords.Add(password);
 
             var email = new Email()
@@ -67,10 +66,12 @@ namespace Stable.Business.Concrete.Processes
                 Status = Core.Enums.AccountStatus.Active,
                 Balance = new Balance()
                 {
-                    Amount = 0
+                    Amount = 0,
+                    CurrencyTypeId= userRegisterRequest.CurrencyTypeId
                 },
                 Name = userRegisterRequest.AccountName,
-                AccountTypeId = 1
+                AccountTypeId = userRegisterRequest.AccountTypeId,
+                
             };
 
             user.Accounts.Add(account);

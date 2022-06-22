@@ -104,10 +104,18 @@ namespace Stable.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 6, 21, 13, 59, 39, 301, DateTimeKind.Local).AddTicks(1409),
+                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 432, DateTimeKind.Local).AddTicks(9551),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 21, 13, 59, 39, 303, DateTimeKind.Local).AddTicks(813),
-                            Name = "Dolar"
+                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 434, DateTimeKind.Local).AddTicks(3091),
+                            Name = "Checking Account"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 435, DateTimeKind.Local).AddTicks(1542),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 435, DateTimeKind.Local).AddTicks(1549),
+                            Name = "Deposit Account"
                         });
                 });
 
@@ -161,6 +169,9 @@ namespace Stable.Repository.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<long>("CurrencyTypeId")
+                        .HasColumnType("bigint");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -168,6 +179,8 @@ namespace Stable.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrencyTypeId");
 
                     b.ToTable("Balances");
                 });
@@ -208,6 +221,66 @@ namespace Stable.Repository.Migrations
                         .IsUnique();
 
                     b.ToTable("CorporateUsers");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.CurrencyType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CurrencyTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(7823),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(7829),
+                            Name = "TL"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8155),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8157),
+                            Name = "Dollar"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8161),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8161),
+                            Name = "Euro"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8164),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8164),
+                            Name = "Gold"
+                        });
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Email", b =>
@@ -422,6 +495,17 @@ namespace Stable.Repository.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Stable.Entity.Concrete.Balance", b =>
+                {
+                    b.HasOne("Stable.Entity.Concrete.CurrencyType", "CurrencyType")
+                        .WithMany("Balances")
+                        .HasForeignKey("CurrencyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CurrencyType");
+                });
+
             modelBuilder.Entity("Stable.Entity.Concrete.CorporateUser", b =>
                 {
                     b.HasOne("Stable.Entity.Concrete.User", "User")
@@ -490,6 +574,11 @@ namespace Stable.Repository.Migrations
             modelBuilder.Entity("Stable.Entity.Concrete.Balance", b =>
                 {
                     b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.CurrencyType", b =>
+                {
+                    b.Navigation("Balances");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.User", b =>

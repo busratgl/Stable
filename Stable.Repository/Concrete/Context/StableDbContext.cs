@@ -20,6 +20,7 @@ namespace Stable.Repository.Concrete.Context
         public DbSet<Email> Emails { get; set; }
         public DbSet<Password> Passwords { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
+        public DbSet<CurrencyType> CurrencyTypes { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -39,6 +40,7 @@ namespace Stable.Repository.Concrete.Context
             modelBuilder.ApplyConfiguration(new PasswordConfiguration());
             modelBuilder.ApplyConfiguration(new AccountTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CurrencyTypeConfiguration());
 
 
             base.OnModelCreating(modelBuilder);

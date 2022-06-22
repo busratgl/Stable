@@ -20,6 +20,8 @@ namespace Stable.Business.Requests
         public string Password { get; set; }
         public UserType UserType { get; set; }
         public string AccountName { get; set; }
+        public long AccountTypeId { get; set; }
+        public long CurrencyTypeId { get; set; }
         public string CorporateName { get; set; }
         public long TaxNumber { get; set; }
 
