@@ -24,7 +24,7 @@ namespace Stable.Business.Concrete.Processes
 
         public async Task<UserRegisterDto> ExecuteAsync(UserRegisterRequest userRegisterRequest, CancellationToken cancellationToken)
         {
-            var isExist = await _unitOfWork.Users.AnyAsync(x => x.Emails.Any(y => y.IsActiveEmailAddress && y.EmailAddress == userRegisterRequest.Email));
+            var isExist = await _unitOfWork.Users.AnyAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userRegisterRequest.Email));
 
             if (isExist)
             {
@@ -69,6 +69,7 @@ namespace Stable.Business.Concrete.Processes
                 {
                     Amount = 0,
                     CurrencyTypeId = userRegisterRequest.CurrencyTypeId
+
                 },
                 Name = userRegisterRequest.AccountName,
                 AccountTypeId = userRegisterRequest.AccountTypeId,

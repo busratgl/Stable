@@ -10,7 +10,7 @@ namespace Stable.Repository.Abstract
 {
     public interface IBaseRepository<T> where T : class, IEntity, new()
     {
-        Task<T> GetAsync(Expression<Func<T, bool>> expression);
+        Task<T> GetAsync(Expression<Func<T, bool>> expression, params Expression<Func<T, object>>[] includeProperties);
         Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> expression = null);
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);

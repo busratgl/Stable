@@ -40,6 +40,7 @@ namespace Stable.API
         {
             services.AddScoped<IUserRegisterProcess, UserRegisterProcess>();
             services.AddScoped<IUserLoginProcess, UserLoginProcess>();
+            services.AddScoped<ICurrencyExchangeRateProcess, CurrencyExchangeRateProcess>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<StableDbContext>();
 

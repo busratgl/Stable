@@ -11,6 +11,6 @@ namespace Stable.Core.Utilities.Results.Abstract
     {
         public ResultStatus ResultStatus { get; } //ResultStatus.Success or ResultStatus.Error etc.
         public string Message { get; }
-        public Exception Exception { get; }
+
     }
 }

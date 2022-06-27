@@ -23,8 +23,8 @@ namespace Stable.Business.Concrete.Processes
 
         public async Task<UserLoginDto> ExecuteAsync(UserLoginRequest userLoginRequest, CancellationToken cancellationToken)
         {
-            var user = await _unitOfWork.Users.GetAsync(u => u.Emails.Any(d => d.IsActiveEmailAddress && d.EmailAddress == userLoginRequest.Email)
-            && u.Passwords.Any(d => d.IsActivePassword && d.PasswordText == userLoginRequest.Password));
+            var user = await _unitOfWork.Users.GetAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userLoginRequest.Email)
+            && u.Passwords.Any(u => u.IsActivePassword && u.PasswordText == userLoginRequest.Password));
 
             if (user == null)
             {

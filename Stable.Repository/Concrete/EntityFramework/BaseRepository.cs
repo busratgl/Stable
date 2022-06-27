@@ -20,6 +20,13 @@ namespace Stable.Repository.Concrete.EntityFramework
             _stableDbContext = stableDbContext;
         }
 
+        public async Task<T> GetAsync(Expression<Func<T, bool>> expression, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _stableDbContext.Set<T>();
+
+            return await query.SingleOrDefaultAsync(expression);
+        }
+
         public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
         {
             return await _stableDbContext.Set<T>().CountAsync(expression);
@@ -41,14 +48,6 @@ namespace Stable.Repository.Concrete.EntityFramework
 
             return await query.ToListAsync();
         }
-
-        public async Task<T> GetAsync(Expression<Func<T, bool>> expression)
-        {
-            IQueryable<T> query = _stableDbContext.Set<T>();
-
-            return await query.SingleOrDefaultAsync(expression);
-        }
-
         public async Task CreateAsync(T entity)
         {
             await _stableDbContext.Set<T>().AddAsync(entity);
@@ -63,5 +62,7 @@ namespace Stable.Repository.Concrete.EntityFramework
         {
             return await _stableDbContext.Set<T>().AnyAsync(expression);
         }
+
+
     }
 }
