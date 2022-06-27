@@ -11,6 +11,7 @@ namespace Stable.Entity.Concrete
     {
         public string Name { get; set; }
         public string AddressText { get; set; }
+        public string Postcode { get; set; }
         public User User { get; set; }
         public long UserId { get; set; }
         public bool IsActiveAddress { get; set; }

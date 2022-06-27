@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 
 namespace Stable.API.Validators
@@ -7,8 +8,8 @@ namespace Stable.API.Validators
     {
         public UserLoginRequestValidator()
         {
-            this.RuleFor(u => u.Email).NotEmpty();
-            this.RuleFor(u => u.Password).NotEmpty().MinimumLength(9).MaximumLength(15);
+            this.RuleFor(u => u.Email).NotEmpty().EmailAddress().Must(ValidationHelper.CheckEmailValidation);
+            this.RuleFor(u => u.Password).NotEmpty().Length(9, 15).Must(ValidationHelper.CheckPasswordValidation);
         }
     }
 }

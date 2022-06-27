@@ -55,6 +55,7 @@ namespace Stable.Business.Concrete.Processes
             {
                 AddressText = userRegisterRequest.Address,
                 Name = userRegisterRequest.AddressName,
+                Postcode = userRegisterRequest.Postcode,
                 IsActiveAddress = true,
             };
 
@@ -62,16 +63,16 @@ namespace Stable.Business.Concrete.Processes
 
             var account = new Account()
             {
-                AccountNumber = Guid.NewGuid().ToString().Substring(0,34),
+                AccountNumber = Guid.NewGuid().ToString().Substring(0, 34),
                 Status = Core.Enums.AccountStatus.Active,
                 Balance = new Balance()
                 {
                     Amount = 0,
-                    CurrencyTypeId= userRegisterRequest.CurrencyTypeId
+                    CurrencyTypeId = userRegisterRequest.CurrencyTypeId
                 },
                 Name = userRegisterRequest.AccountName,
                 AccountTypeId = userRegisterRequest.AccountTypeId,
-                
+
             };
 
             user.Accounts.Add(account);

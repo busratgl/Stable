@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using Stable.Business.Concrete.Helpers;
 using Stable.Business.Requests;
+using System.Text.RegularExpressions;
 
 namespace Stable.API.Validators
 {
@@ -7,14 +9,16 @@ namespace Stable.API.Validators
     {
         public UserRegisterRequestValidator()
         {
-            this.RuleFor(x => x.FirstName).NotEmpty().MinimumLength(3);
-            this.RuleFor(x => x.LastName).NotEmpty().MinimumLength(2);
-            this.RuleFor(x => x.Email).NotEmpty();
-            this.RuleFor(x => x.PhoneNumber).NotEmpty();
-            this.RuleFor(x => x.Address).NotEmpty();
-            this.RuleFor(x => x.BirthDate).NotEmpty().LessThanOrEqualTo(System.DateTime.Now.AddYears(-18));
-            this.RuleFor(x => x.IdentityNumber).NotEmpty();
-            this.RuleFor(x => x.Password).NotEmpty().MinimumLength(9).MaximumLength(15);
+            this.RuleFor(u => u.FirstName).NotEmpty().MinimumLength(3);
+            this.RuleFor(u => u.LastName).NotEmpty().MinimumLength(2);
+            this.RuleFor(u => u.Email).NotEmpty().EmailAddress().Must(ValidationHelper.CheckEmailValidation);
+            this.RuleFor(u => u.PhoneNumber).NotEmpty().Must(ValidationHelper.CheckPhoneNumberValidation);
+            this.RuleFor(u => u.Address).NotEmpty().Length(20, 250);
+            this.RuleFor(u => u.Postcode).NotEmpty();
+            this.RuleFor(u => u.BirthDate).NotEmpty().LessThanOrEqualTo(System.DateTime.Now.AddYears(-18));
+            this.RuleFor(u => u.IdentityNumber).NotEmpty().Equal(11);
+            this.RuleFor(u => u.Password).NotEmpty().Length(9, 15).Must(ValidationHelper.CheckPasswordValidation);
         }
+
     }
 }

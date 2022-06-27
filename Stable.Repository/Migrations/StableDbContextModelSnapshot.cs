@@ -104,17 +104,17 @@ namespace Stable.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 432, DateTimeKind.Local).AddTicks(9551),
+                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 342, DateTimeKind.Local).AddTicks(4204),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 434, DateTimeKind.Local).AddTicks(3091),
+                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 343, DateTimeKind.Local).AddTicks(8655),
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 435, DateTimeKind.Local).AddTicks(1542),
+                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 344, DateTimeKind.Local).AddTicks(6148),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 435, DateTimeKind.Local).AddTicks(1549),
+                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 344, DateTimeKind.Local).AddTicks(6155),
                             Name = "Deposit Account"
                         });
                 });
@@ -145,6 +145,9 @@ namespace Stable.Repository.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Postcode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
@@ -252,33 +255,33 @@ namespace Stable.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(7823),
+                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1366),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(7829),
+                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1372),
                             Name = "TL"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8155),
+                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1720),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8157),
+                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1723),
                             Name = "Dollar"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8161),
+                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1726),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8161),
+                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1727),
                             Name = "Euro"
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8164),
+                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1729),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 22, 23, 43, 24, 436, DateTimeKind.Local).AddTicks(8164),
+                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1730),
                             Name = "Gold"
                         });
                 });
