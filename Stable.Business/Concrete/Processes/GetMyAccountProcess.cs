@@ -18,25 +18,15 @@ namespace Stable.Business.Concrete.Processes
     public class GetMyAccountProcess : IGetMyAccountProcess
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ICacheService _cacheService;
 
-        public GetMyAccountProcess(IUnitOfWork unitOfWork, ICacheService cacheService)
+
+        public GetMyAccountProcess(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _cacheService = cacheService;
-
         }
 
         public async Task<GetMyAccountDto> ExecuteAsync(GetMyAccountRequest getMyAccountRequest, CancellationToken cancellationToken)
         {
-            var key = "GetMyAccountProcess:" + getMyAccountRequest.UserId;
-            var isExist = await _cacheService.KeyExistAsync(key);
-
-            if (isExist)
-            {
-                var cacheResult = await _cacheService.GetAsync<GetMyAccountDto>(key);
-                return cacheResult;
-            }
 
             var user = await _unitOfWork.Users.GetQuery()
                 .Include(u => u.Accounts)
@@ -82,7 +72,6 @@ namespace Stable.Business.Concrete.Processes
                 result.Accounts.Add(accountDto);
             }
 
-            await _cacheService.SetAsync(key, result);
             return result;
 
         }
