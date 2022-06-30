@@ -1,4 +1,6 @@
-﻿using Stable.Business.Abstract.Processes;
+﻿using Microsoft.EntityFrameworkCore;
+using Stable.Business.Abstract.Caching;
+using Stable.Business.Abstract.Processes;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses;
@@ -16,15 +18,34 @@ namespace Stable.Business.Concrete.Processes
     public class GetMyAccountProcess : IGetMyAccountProcess
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
-        public GetMyAccountProcess(IUnitOfWork unitOfWork)
+        public GetMyAccountProcess(IUnitOfWork unitOfWork, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
+
         }
 
         public async Task<GetMyAccountDto> ExecuteAsync(GetMyAccountRequest getMyAccountRequest, CancellationToken cancellationToken)
         {
-            var user = await _unitOfWork.Users.GetAsync(u => u.Id == getMyAccountRequest.UserId && u.Accounts.Any(u => u.IsActiveAccount && u.Id == getMyAccountRequest.UserId));
+            var key = "GetMyAccountProcess:" + getMyAccountRequest.UserId;
+            var isExist = await _cacheService.KeyExistAsync(key);
+
+            if (isExist)
+            {
+                var cacheResult = await _cacheService.GetAsync<GetMyAccountDto>(key);
+                return cacheResult;
+            }
+
+            var user = await _unitOfWork.Users.GetQuery()
+                .Include(u => u.Accounts)
+                .ThenInclude(a => a.AccountType)
+                .Include(a => a.Accounts)
+                .ThenInclude(a => a.Balance)
+                .ThenInclude(b => b.CurrencyType)
+                .Include(a => a.Accounts)
+                .ThenInclude(a => a.Transactions).FirstOrDefaultAsync(u => u.Id == getMyAccountRequest.UserId && u.Accounts.Any(a => a.Status == Core.Enums.AccountStatus.Active));
 
 
             if (user.Accounts == null)
@@ -33,14 +54,40 @@ namespace Stable.Business.Concrete.Processes
             }
 
             var result = new GetMyAccountDto();
-            result.UserId = getMyAccountRequest.UserId;
 
+            foreach (var account in user.Accounts)
+            {
+                var accountDto = new AccountDto();
+                accountDto.Status = account.Status;
+                accountDto.AccountNumber = account.AccountNumber;
+                accountDto.AccountTypeName = account.AccountType.Name;
+                accountDto.Name = account.Name;
+                accountDto.Balance = new BalanceDto()
+                {
+                    Amount = account.Balance.Amount,
+                    CurrencyTypeName = account.Balance.CurrencyType.Name,
+                };
+
+                foreach (var transaction in account.Transactions)
+                {
+                    var transactionDto = new TransactionDto()
+                    {
+                        Date = transaction.CreatedDate,
+                        Description = transaction.Description
+                    };
+
+                    accountDto.Transactions.Add(transactionDto);
+                }
+
+                result.Accounts.Add(accountDto);
+            }
+
+            await _cacheService.SetAsync(key, result);
             return result;
-
 
         }
 
-       
+
     }
 }
 

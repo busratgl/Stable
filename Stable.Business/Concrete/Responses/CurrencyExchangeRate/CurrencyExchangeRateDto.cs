@@ -8,10 +8,7 @@ namespace Stable.Business.Concrete.Responses.CurrencyExchangeRate
 {
     public class CurrencyExchangeRateDto
     {
-
         public List<CurrencyExchangeRateItemDto> Currencies { get; set; }
-
-
     }
 
 

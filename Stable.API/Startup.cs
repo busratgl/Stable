@@ -12,7 +12,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Converters;
 using Stable.API.Middlewares;
+using Stable.Business.Abstract.Caching;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Caching;
 using Stable.Business.Concrete.Processes;
 using Stable.Repository.Abstract;
 using Stable.Repository.Concrete;
@@ -41,8 +43,10 @@ namespace Stable.API
             services.AddScoped<IUserRegisterProcess, UserRegisterProcess>();
             services.AddScoped<IUserLoginProcess, UserLoginProcess>();
             services.AddScoped<ICurrencyExchangeRateProcess, CurrencyExchangeRateProcess>();
+            services.AddScoped<IGetMyAccountProcess, GetMyAccountProcess>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<StableDbContext>();
+            services.AddScoped<ICacheService, RedisCacheService>();
 
             var key = Encoding.ASCII.GetBytes("ajagfiajkfhgafuajkfgafafkajfgk");
 

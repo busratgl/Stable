@@ -20,9 +20,26 @@ namespace Stable.Repository.Concrete.EntityFramework
             _stableDbContext = stableDbContext;
         }
 
+        public IQueryable<T> GetQuery()
+        {
+            IQueryable<T> query = _stableDbContext.Set<T>();
+            return query;
+        }
         public async Task<T> GetAsync(Expression<Func<T, bool>> expression, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = _stableDbContext.Set<T>();
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+
+            if (includeProperties.Any())
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
 
             return await query.SingleOrDefaultAsync(expression);
         }
@@ -38,12 +55,22 @@ namespace Stable.Repository.Concrete.EntityFramework
 
         }
 
-        public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> expression = null)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> expression = null,
+            params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = _stableDbContext.Set<T>();
+
             if (expression != null)
             {
                 query = query.Where(expression);
+            }
+
+            if (includeProperties.Any())
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
             }
 
             return await query.ToListAsync();
@@ -63,6 +90,6 @@ namespace Stable.Repository.Concrete.EntityFramework
             return await _stableDbContext.Set<T>().AnyAsync(expression);
         }
 
-
+       
     }
 }

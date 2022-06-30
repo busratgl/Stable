@@ -33,8 +33,6 @@ namespace Stable.API.Controllers
         [AllowAnonymous]
         public async Task<DataResult<UserRegisterDto>> Register([FromBody] UserRegisterRequest userRegisterRequest, CancellationToken cancellationToken)
         {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-            var userId = long.Parse(identity.Claims.FirstOrDefault(x => x.Type == "userId").Value);
             var result = await _userRegisterProcess.ExecuteAsync(userRegisterRequest, cancellationToken);
             return new DataResult<UserRegisterDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, result);
         }
