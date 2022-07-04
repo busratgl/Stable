@@ -74,7 +74,7 @@ namespace Stable.Business.Concrete.Processes
 
             return result;
 
-        }
+        } 
 
 
     }
