@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.API\\Stable.API.csproj": {}
+    "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.API\\Stable.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.API\\Stable.API.csproj": {
+    "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.API\\Stable.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.API\\Stable.API.csproj",
+        "projectUniqueName": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.API\\Stable.API.csproj",
         "projectName": "Stable.API",
-        "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.API\\Stable.API.csproj",
-        "packagesPath": "C:\\Users\\tuglu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.API\\obj\\",
+        "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.API\\Stable.API.csproj",
+        "packagesPath": "C:\\Users\\akcan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\tuglu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akcan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +32,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Business\\Stable.Business.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Business\\Stable.Business.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Business\\Stable.Business.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Business\\Stable.Business.csproj"
               },
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj"
               }
             }
           }
@@ -86,21 +90,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Business\\Stable.Business.csproj": {
+    "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Business\\Stable.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Business\\Stable.Business.csproj",
+        "projectUniqueName": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Business\\Stable.Business.csproj",
         "projectName": "Stable.Business",
-        "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Business\\Stable.Business.csproj",
-        "packagesPath": "C:\\Users\\tuglu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Business\\obj\\",
+        "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Business\\Stable.Business.csproj",
+        "packagesPath": "C:\\Users\\akcan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Business\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\tuglu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akcan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -114,11 +122,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj"
               },
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Repository\\Stable.Repository.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Repository\\Stable.Repository.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Repository\\Stable.Repository.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Repository\\Stable.Repository.csproj"
               }
             }
           }
@@ -165,21 +173,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj": {
+    "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj",
+        "projectUniqueName": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj",
         "projectName": "Stable.Core",
-        "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj",
-        "packagesPath": "C:\\Users\\tuglu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\obj\\",
+        "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj",
+        "packagesPath": "C:\\Users\\akcan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\tuglu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akcan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -219,21 +231,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj": {
+    "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj",
+        "projectUniqueName": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj",
         "projectName": "Stable.Entity",
-        "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj",
-        "packagesPath": "C:\\Users\\tuglu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\obj\\",
+        "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj",
+        "packagesPath": "C:\\Users\\akcan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\tuglu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akcan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -247,8 +263,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj"
               }
             }
           }
@@ -277,21 +293,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Repository\\Stable.Repository.csproj": {
+    "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Repository\\Stable.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Repository\\Stable.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Repository\\Stable.Repository.csproj",
         "projectName": "Stable.Repository",
-        "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Repository\\Stable.Repository.csproj",
-        "packagesPath": "C:\\Users\\tuglu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Repository\\obj\\",
+        "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Repository\\Stable.Repository.csproj",
+        "packagesPath": "C:\\Users\\akcan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\tuglu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akcan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -305,11 +325,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Core\\Stable.Core.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Core\\Stable.Core.csproj"
               },
-              "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj": {
-                "projectPath": "C:\\Users\\tuglu\\source\\repos\\Stable\\Stable.Entity\\Stable.Entity.csproj"
+              "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj": {
+                "projectPath": "C:\\Users\\akcan\\Source\\Repos\\StableHasan\\Stable.Entity\\Stable.Entity.csproj"
               }
             }
           }
@@ -358,7 +378,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
