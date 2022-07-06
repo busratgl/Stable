@@ -44,6 +44,7 @@ namespace Stable.API
             services.AddScoped<IUserLoginProcess, UserLoginProcess>();
             services.AddScoped<ICurrencyExchangeRateProcess, CurrencyExchangeRateProcess>();
             services.AddScoped<IGetMyAccountProcess, GetMyAccountProcess>();
+            services.AddScoped<IBuyingCurrencyProcess, BuyingCurrencyProcess>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<StableDbContext>();
             services.AddScoped<ICacheService, RedisCacheService>();

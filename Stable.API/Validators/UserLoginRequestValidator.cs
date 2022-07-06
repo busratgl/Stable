@@ -8,8 +8,8 @@ namespace Stable.API.Validators
     {
         public UserLoginRequestValidator()
         {
-            this.RuleFor(u => u.Email).NotEmpty().EmailAddress().Must(ValidationHelper.CheckEmailValidation);
-            this.RuleFor(u => u.Password).NotEmpty().Length(9, 15).Must(ValidationHelper.CheckPasswordValidation);
+            //this.RuleFor(u => u.Email).NotEmpty().EmailAddress().Must(ValidationHelper.CheckEmailValidation);
+            //this.RuleFor(u => u.Password).NotEmpty().Length(9, 15).Must(ValidationHelper.CheckPasswordValidation);
         }
     }
 }

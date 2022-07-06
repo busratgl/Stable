@@ -1,4 +1,5 @@
 ﻿using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.CurrencyExchangeRate;
 using Stable.Core.Utilities.Results.Concrete;
@@ -24,38 +25,27 @@ namespace Stable.Business.Concrete.Processes
 
         public CurrencyExchangeRateDto Execute(CurrencyExchangeRateRequest currencyExchangeRateRequest)
         {
-            CurrencyExchangeRateDto result = new CurrencyExchangeRateDto();
+            var result = new CurrencyExchangeRateDto();
+            var currencyResult = GetCurrencyHelper.GetCurrency(currencyExchangeRateRequest.Day, currencyExchangeRateRequest.Month, currencyExchangeRateRequest.Year, currencyExchangeRateRequest.IsToday);
 
-            string tcmbLink = string.Format("https://www.tcmb.gov.tr/kurlar/{0}.xml",
-                (currencyExchangeRateRequest.IsToday) ? "today" : string.Format("{2}/{1}/{0}{1}{2}",
-                (currencyExchangeRateRequest.Day.ToString().PadLeft(2, '0'), currencyExchangeRateRequest.Month.ToString().PadLeft(2, '0')),
-                currencyExchangeRateRequest.Year));
 
-            result.Currencies = new List<CurrencyExchangeRateItemDto>();
-            XmlDocument doc = new XmlDocument();
-            doc.Load(tcmbLink);
-
-            if (doc.SelectNodes("Tarih_Date").Count < 1)
+            foreach (var currency in currencyResult.Currencies)
             {
-                throw new Exception("Kur bilgisi bulunamadı.");
+                var currencyExchangeRateItemDto = new CurrencyExchangeRateItemDto();
+                currencyExchangeRateItemDto.Unit = currency.Unit;
+                currencyExchangeRateItemDto.Code = currency.Code;
+                currencyExchangeRateItemDto.Name = currency.Name;
+                currencyExchangeRateItemDto.BanknoteBuyingRate = currency.BanknoteBuyingRate;
+                currencyExchangeRateItemDto.BanknoteSellingRate = currency.BanknoteSellingRate;
+                currencyExchangeRateItemDto.ForexBuying = currency.ForexBuying;
+                currencyExchangeRateItemDto.ForexSelling = currency.ForexSelling;
 
-            }
+                result.Currencies.Add(currencyExchangeRateItemDto);
 
-            foreach (XmlNode node in doc.SelectNodes("Tarih_Date")[0].ChildNodes)
-            {
-                var currencyRate = new CurrencyExchangeRateItemDto();
-                currencyRate.Code = node.Attributes["Kod"].Value;
-                currencyRate.Name = node["Isim"].InnerText;
-                currencyRate.Unit = int.Parse(node["Unit"].InnerText);
-                currencyRate.ForexBuying = Convert.ToDecimal("0" + node["ForexBuying"].InnerText.Replace(".", ","));
-                currencyRate.ForexSelling = Convert.ToDecimal("0" + node["ForexSelling"].InnerText.Replace(".", ","));
-                currencyRate.BanknoteBuyingRate = Convert.ToDecimal("0" + node["BanknoteBuying"].InnerText.Replace(".", ","));
-                currencyRate.BanknoteSellingRate = Convert.ToDecimal("0" + node["BanknoteSelling"].InnerText.Replace(".", ","));
-
-                result.Currencies.Add(currencyRate);
             }
 
             return result;
+
         }
     }
 }

@@ -10,6 +10,10 @@ namespace Stable.Entity.Concrete
 {
     public class Account : EntityBase
     {
+        public Account()
+        {
+            this.Transactions = new List<Transaction>();
+        }
         public string Name { get; set; }
         public string AccountNumber { get; set; }
         public AccountType AccountType { get; set; }

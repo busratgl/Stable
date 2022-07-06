@@ -47,7 +47,6 @@ namespace Stable.API.Controllers
 
 
         [HttpGet("getMyAccount")]
-        [Authorize]
         public async Task<DataResult<GetMyAccountDto>> GetMyAccount(CancellationToken cancellationToken)
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
