@@ -1,5 +1,6 @@
 ﻿using Stable.Business.Abstract.Processes;
 using Stable.Business.Concrete.Responses;
+using Stable.Business.Concrete.Responses.UserRegisterDto;
 using Stable.Business.Requests;
 using Stable.Entity.Concrete;
 using Stable.Repository.Abstract;
@@ -104,7 +105,7 @@ namespace Stable.Business.Concrete.Processes
             await _unitOfWork.Users.CreateAsync(user);
             await _unitOfWork.SaveAsync();
 
-            return new UserRegisterDto() { IsSuccess = true };
+            return new UserRegisterDto() {Message = "Bankamıza kaydınız başarıyla gerçekleşmiştir." };
         }
 
     }

@@ -1,5 +1,5 @@
 ﻿using Stable.Business.Concrete.Requests;
-using Stable.Business.Concrete.Responses;
+using Stable.Business.Concrete.Responses.UserLoginDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,7 +2,7 @@
 using Stable.Business.Abstract.Processes;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
-using Stable.Business.Concrete.Responses;
+using Stable.Business.Concrete.Responses.UserLoginDto;
 using Stable.Repository.Abstract;
 using System;
 using System.Collections.Generic;

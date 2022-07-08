@@ -1,4 +1,4 @@
-﻿using Stable.Business.Concrete.Responses;
+﻿using Stable.Business.Concrete.Responses.UserRegisterDto;
 using Stable.Business.Requests;
 using System;
 using System.Collections.Generic;

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stable.Business.Concrete.Responses
+namespace Stable.Business.Concrete.Responses.UserRegisterDto
 {
     public class UserRegisterDto
     {
-        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
     }
 }
