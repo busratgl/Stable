@@ -30,7 +30,6 @@ namespace Stable.API.Middlewares
                 var result = new Result(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Error, ex.Message);
                 var resultAsJsonString = JsonConvert.SerializeObject(result);
                 await httpContext.Response.WriteAsync(resultAsJsonString);
-
             }
         }
     }

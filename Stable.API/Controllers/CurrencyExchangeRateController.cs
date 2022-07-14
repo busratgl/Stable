@@ -13,13 +13,9 @@ using System.Xml;
 
 namespace Stable.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class CurrencyExchangeRateController : BaseController
     {
-
         private readonly ICurrencyExchangeRateProcess _currencyExchangeRateProcess;
-
         public CurrencyExchangeRateController(ICurrencyExchangeRateProcess currencyExchangeRateProcess)
         {
             _currencyExchangeRateProcess = currencyExchangeRateProcess;
@@ -32,8 +28,5 @@ namespace Stable.API.Controllers
             var result = _currencyExchangeRateProcess.Execute(currencyExchangeRateRequest);
             return new DataResult<CurrencyExchangeRateDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, result);
         }
-
-
-
     }
 }

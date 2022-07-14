@@ -13,6 +13,5 @@ namespace Stable.Entity.Concrete
         public bool IsActivePassword { get; set; }
         public User User { get; set; }
         public long UserId { get; set; }
-
     }
 }

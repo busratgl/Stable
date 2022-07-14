@@ -25,6 +25,5 @@ namespace Stable.Business.Requests
         public long CurrencyTypeId { get; set; }
         public string CorporateName { get; set; }
         public long TaxNumber { get; set; }
-
     }
 }

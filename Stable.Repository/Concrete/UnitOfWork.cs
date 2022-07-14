@@ -22,14 +22,13 @@ namespace Stable.Repository.Concrete
         private IndividualUserRepository _individualUserRepository;
         private TransactionRepository _transactionRepository;
         private UserRepository _userRepository;
+        private UserIpAddressRepository _userIpAddressRepository;
 
         public UnitOfWork(StableDbContext context)
         {
             _context = context;
         }
-
         public IAccountRepository Accounts => _accountRepository ?? new AccountRepository(_context);
-        //Null Coalescing Operatörü(??)
         public IAccountTypeRepository AccountTypes => _accountTypeRepository ?? new AccountTypeRepository(_context);
 
         public IAddressRepository Addresses => _addressRepository ?? new AddressRepository(_context);
@@ -47,7 +46,7 @@ namespace Stable.Repository.Concrete
 
         public IIndividualUserRepository IndividualUsers => _individualUserRepository ?? new IndividualUserRepository(_context);
 
-
+        public IUserIpAddressRepository UserIpAddresses => _userIpAddressRepository ?? new UserIpAddressRepository(_context);
 
         public async ValueTask DisposeAsync()
         {

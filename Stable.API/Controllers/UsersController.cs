@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 
 namespace Stable.API.Controllers
 {
-
     public class UsersController : BaseController
     {
         private readonly IUserRegisterProcess _userRegisterProcess;
@@ -45,6 +44,8 @@ namespace Stable.API.Controllers
         [AllowAnonymous]
         public async Task<DataResult<UserLoginDto>> Login([FromBody] UserLoginRequest userLoginRequest, CancellationToken cancellationToken)
         {
+            userLoginRequest.RemoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+
             var result = await _userLoginProcess.ExecuteAsync(userLoginRequest, cancellationToken);
             return new DataResult<UserLoginDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, result);
         }
@@ -64,7 +65,6 @@ namespace Stable.API.Controllers
         }
 
         [HttpPost("createAccount")]
-
         public async Task<DataResult<CreateAccountDto>> CreateAccount([FromBody] CreateAccountRequest createAccountRequest, CancellationToken cancellationToken)
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;

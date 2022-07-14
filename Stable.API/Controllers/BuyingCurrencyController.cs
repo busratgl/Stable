@@ -13,8 +13,6 @@ using System.Threading.Tasks;
 
 namespace Stable.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class BuyingCurrencyController : BaseController
     {
         private readonly IBuyingCurrencyProcess _buyingCurrencyProcess;
@@ -24,7 +22,7 @@ namespace Stable.API.Controllers
             _buyingCurrencyProcess = buyingCurrencyProcess;
         }
 
-        [HttpPost]
+        [HttpPost("buyingCurrency")]
         public async Task<DataResult<BuyingCurrencyDto>> BuyingCurrency([FromBody] BuyingCurrencyRequest buyingCurrencyRequest, CancellationToken cancellationToken)
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
@@ -34,7 +32,6 @@ namespace Stable.API.Controllers
 
             var result = await _buyingCurrencyProcess.ExecuteAsync(buyingCurrencyRequest, cancellationToken);
             return new DataResult<BuyingCurrencyDto>(Core.Utilities.Results.ComplexTypes.Enums.ResultStatus.Success, result);
-
         }
     }
 }

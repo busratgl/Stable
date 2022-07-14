@@ -1,8 +1,3 @@
-C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.AssemblyReference.cache
-C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.AssemblyInfoInputs.cache
-C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.AssemblyInfo.cs
-C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.CoreCompileInputs.cache
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Repository.deps.json
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Repository.runtimeconfig.json
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Repository.runtimeconfig.dev.json
@@ -12,6 +7,11 @@ C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Cor
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Entity.dll
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Core.pdb
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\bin\Debug\net5.0\Stable.Entity.pdb
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.AssemblyReference.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.AssemblyInfoInputs.cache
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.AssemblyInfo.cs
+C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.CoreCompileInputs.cache
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.csproj.CopyComplete
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\Stable.Repository.dll
 C:\Users\tuglu\source\repos\Stable\Stable.Repository\obj\Debug\net5.0\refint\Stable.Repository.dll

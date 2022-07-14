@@ -16,7 +16,6 @@ namespace Stable.Business.Concrete.Processes
     public class CreateAccountProcess : ICreateAccountProcess
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public CreateAccountProcess(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -27,12 +26,13 @@ namespace Stable.Business.Concrete.Processes
             var user = await _unitOfWork.Users.GetQuery()
                 .Include(u => u.Accounts)
                 .ThenInclude(a => a.AccountType)
-                .Include(a=>a.Accounts)
-                .ThenInclude(a=>a.Balance)
-                .ThenInclude(b=>b.CurrencyType)
+                .Include(a => a.Accounts)
+                .ThenInclude(a => a.Balance)
+                .ThenInclude(b => b.CurrencyType)
                 .FirstOrDefaultAsync(u => u.Id == createAccountRequest.UserId);
 
             var isAccountAlreadyExist = user.Accounts.Any(a => a.AccountType.Name == createAccountRequest.AccountType && a.Balance.CurrencyType.Name == createAccountRequest.CurrencyType);
+
             if (isAccountAlreadyExist)
             {
                 throw new Exception("Oluşturmak istediğiniz hesap türünde hesabınız sistemimizde bulunmaktadır. İşleminize devam etmek istiyorsanız, lütfen başka bir hesap türü seçiniz.");
@@ -46,7 +46,7 @@ namespace Stable.Business.Concrete.Processes
                 AccountType = new AccountType()
                 {
                     Name = createAccountRequest.AccountType,
-                    
+
                 },
 
                 Balance = new Balance()
@@ -66,8 +66,7 @@ namespace Stable.Business.Concrete.Processes
             await _unitOfWork.Accounts.CreateAsync(account);
             await _unitOfWork.SaveAsync();
 
-            return new CreateAccountDto() {Message= account.Name + " hesabınız başarıyla oluşturulmuştur." };
-
+            return new CreateAccountDto() { Message = account.Name + " hesabınız başarıyla oluşturulmuştur." };
         }
     }
 }

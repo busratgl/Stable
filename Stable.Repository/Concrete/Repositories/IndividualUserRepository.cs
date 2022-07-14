@@ -15,6 +15,5 @@ namespace Stable.Repository.Concrete.Repositories
         public IndividualUserRepository(StableDbContext stableDbContext) : base(stableDbContext)
         {
         }
-
     }
 }

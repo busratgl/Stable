@@ -15,6 +15,5 @@ namespace Stable.Business.Concrete.Responses.GetMyAccountDto
             this.Accounts = new List<AccountDto>();
         }
         public List<AccountDto> Accounts { get; set; }
-
     }
 }

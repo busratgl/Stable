@@ -104,17 +104,17 @@ namespace Stable.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 342, DateTimeKind.Local).AddTicks(4204),
+                            CreatedDate = new DateTime(2022, 7, 13, 15, 18, 0, 331, DateTimeKind.Local).AddTicks(786),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 343, DateTimeKind.Local).AddTicks(8655),
+                            ModifiedDate = new DateTime(2022, 7, 13, 15, 18, 0, 332, DateTimeKind.Local).AddTicks(5506),
                             Name = "Checking Account"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 344, DateTimeKind.Local).AddTicks(6148),
+                            CreatedDate = new DateTime(2022, 7, 13, 15, 18, 0, 333, DateTimeKind.Local).AddTicks(3268),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 344, DateTimeKind.Local).AddTicks(6155),
+                            ModifiedDate = new DateTime(2022, 7, 13, 15, 18, 0, 333, DateTimeKind.Local).AddTicks(3274),
                             Name = "Deposit Account"
                         });
                 });
@@ -255,33 +255,33 @@ namespace Stable.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1366),
+                            CreatedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8529),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1372),
+                            ModifiedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8535),
                             Name = "TL"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1720),
+                            CreatedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8836),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1723),
+                            ModifiedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8838),
                             Name = "Dollar"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1726),
+                            CreatedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8842),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1727),
+                            ModifiedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8843),
                             Name = "Euro"
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1729),
+                            CreatedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8844),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2022, 6, 23, 16, 5, 1, 346, DateTimeKind.Local).AddTicks(1730),
+                            ModifiedDate = new DateTime(2022, 7, 13, 15, 18, 0, 334, DateTimeKind.Local).AddTicks(8845),
                             Name = "Gold"
                         });
                 });
@@ -407,7 +407,8 @@ namespace Stable.Repository.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId")
                         .HasColumnType("bigint");
@@ -427,6 +428,8 @@ namespace Stable.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Transactions");
                 });
@@ -458,6 +461,35 @@ namespace Stable.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.UserIpAddress", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RemoteIpAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserIpAddress");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Account", b =>
@@ -557,11 +589,22 @@ namespace Stable.Repository.Migrations
                 {
                     b.HasOne("Stable.Entity.Concrete.Account", "Account")
                         .WithMany("Transactions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("Stable.Entity.Concrete.UserIpAddress", b =>
+                {
+                    b.HasOne("Stable.Entity.Concrete.User", "User")
+                        .WithMany("UserIpAddresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Stable.Entity.Concrete.Account", b =>
@@ -597,6 +640,8 @@ namespace Stable.Repository.Migrations
                     b.Navigation("IndividualUser");
 
                     b.Navigation("Passwords");
+
+                    b.Navigation("UserIpAddresses");
                 });
 #pragma warning restore 612, 618
         }

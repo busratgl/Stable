@@ -105,8 +105,7 @@ namespace Stable.Business.Concrete.Processes
             await _unitOfWork.Users.CreateAsync(user);
             await _unitOfWork.SaveAsync();
 
-            return new UserRegisterDto() {Message = "Bankamıza kaydınız başarıyla gerçekleşmiştir." };
+            return new UserRegisterDto() { Message = "Bankamıza kaydınız başarıyla gerçekleşmiştir." };
         }
-
     }
 }

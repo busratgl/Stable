@@ -10,6 +10,5 @@ namespace Stable.Business.Concrete.Responses.GetMyAccountDto
     {
         public decimal Amount { get; set; }
         public string CurrencyTypeName { get; set; }
-
     }
 }

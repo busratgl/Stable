@@ -14,6 +14,4 @@ namespace Stable.Business.Concrete.Responses.CurrencyExchangeRate
         }
         public List<CurrencyExchangeRateItemDto> Currencies { get; set; }
     }
-
-
 }

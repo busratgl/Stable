@@ -56,14 +56,12 @@ namespace Stable.Business.Concrete.Processes
                 sourceRate = sourceCurrencyName.ForexBuying;
             }
 
-            var targetCurrencyName = getCurrencyModel.Currencies.FirstOrDefault(c => c.Name.ToLower() == (buyingCurrencyRequest.TargetCurrency.ToLower() == "Dollar".ToLower() ? "ABD DOLARI".ToLower() : buyingCurrencyRequest.TargetCurrency.ToLower() ));
+            var targetCurrencyName = getCurrencyModel.Currencies.FirstOrDefault(c => c.Name.ToLower() == (buyingCurrencyRequest.TargetCurrency.ToLower() == "Dollar".ToLower() ? "ABD DOLARI".ToLower() : buyingCurrencyRequest.TargetCurrency.ToLower()));
 
             if (targetCurrencyName != null)
             {
                 targetRate = targetCurrencyName.ForexSelling;
             }
-
-         
 
             if (sourceBalance.Amount < buyingCurrencyRequest.Amount)
             {
@@ -73,27 +71,21 @@ namespace Stable.Business.Concrete.Processes
             sourceBalance.Amount -= buyingCurrencyRequest.Amount;
             targetBalance.Amount += buyingCurrencyRequest.Amount * (sourceRate / targetRate);
 
-
-
             var transaction = new Transaction()
             {
                 Description = Decimal.Round(buyingCurrencyRequest.Amount * (sourceRate / targetRate), 2) + " " + targetCurrencyName.Name + " alım işleminiz gercekleşmiştir. " +
                 sourceCurrencyName?.Name ?? "TL" + " hesabınızdan " + Decimal.Round(buyingCurrencyRequest.Amount, 2) + " düşülmüştür.",
-                AccountId=user.Accounts.First(a=>a.BalanceId == sourceBalance.Id).Id,
+                AccountId = user.Accounts.First(a => a.BalanceId == sourceBalance.Id).Id,
             };
-
 
             await _unitOfWork.Transactions.CreateAsync(transaction);
             await _unitOfWork.SaveAsync();
 
-
             return new BuyingCurrencyDto()
             {
-                Message = Decimal.Round(buyingCurrencyRequest.Amount * (sourceRate / targetRate),2) + " " + targetCurrencyName.Name + " alım işleminiz gercekleşmiştir. " +
-                sourceCurrencyName?.Name ?? "TL" + " hesabınızdan " + Decimal.Round(buyingCurrencyRequest.Amount,2) + " düşülmüştür.",
+                Message = Decimal.Round(buyingCurrencyRequest.Amount * (sourceRate / targetRate), 2) + " " + targetCurrencyName.Name + " alım işleminiz gercekleşmiştir. " +
+                sourceCurrencyName?.Name ?? "TL" + " hesabınızdan " + Decimal.Round(buyingCurrencyRequest.Amount, 2) + " düşülmüştür.",
             };
         }
-
-
     }
 }

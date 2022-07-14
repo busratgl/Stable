@@ -34,18 +34,18 @@ namespace Stable.API
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IUserRegisterProcess, UserRegisterProcess>();
-            services.AddScoped<IUserLoginProcess, UserLoginProcess>();
-            services.AddScoped<ICurrencyExchangeRateProcess, CurrencyExchangeRateProcess>();
-            services.AddScoped<IGetMyAccountProcess, GetMyAccountProcess>();
-            services.AddScoped<IBuyingCurrencyProcess, BuyingCurrencyProcess>();
-            services.AddScoped<ICreateAccountProcess, CreateAccountProcess>();
+            //services.AddScoped<IUserRegisterProcess, UserRegisterProcess>();
+            //services.AddScoped<IUserLoginProcess, UserLoginProcess>();
+            //services.AddScoped<ICurrencyExchangeRateProcess, CurrencyExchangeRateProcess>();
+            //services.AddScoped<IGetMyAccountProcess, GetMyAccountProcess>();
+            //services.AddScoped<IBuyingCurrencyProcess, BuyingCurrencyProcess>();
+            //services.AddScoped<ICreateAccountProcess, CreateAccountProcess>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<StableDbContext>();
             services.AddScoped<ICacheService, RedisCacheService>();
@@ -71,8 +71,6 @@ namespace Stable.API
                     RequireExpirationTime = true
                 };
             });
-
-
 
             services.AddControllers().AddFluentValidation(x =>
             {
@@ -112,7 +110,6 @@ namespace Stable.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
 
             if (env.IsDevelopment())
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Caching;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Autofac;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses;
@@ -18,8 +19,6 @@ namespace Stable.Business.Concrete.Processes
     public class GetMyAccountProcess : IGetMyAccountProcess
     {
         private readonly IUnitOfWork _unitOfWork;
-
-
         public GetMyAccountProcess(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -27,7 +26,6 @@ namespace Stable.Business.Concrete.Processes
 
         public async Task<GetMyAccountDto> ExecuteAsync(GetMyAccountRequest getMyAccountRequest, CancellationToken cancellationToken)
         {
-
             var user = await _unitOfWork.Users.GetQuery()
                 .Include(u => u.Accounts)
                 .ThenInclude(a => a.AccountType)
@@ -75,8 +73,6 @@ namespace Stable.Business.Concrete.Processes
             return result;
 
         }
-
-
     }
 }
 

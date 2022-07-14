@@ -1,4 +1,5 @@
-﻿using Stable.Business.Concrete.Processes;
+﻿using Stable.Business.Concrete.Autofac;
+using Stable.Business.Concrete.Processes;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses;
 using Stable.Business.Concrete.Responses.GetMyAccountDto;

@@ -8,20 +8,18 @@ namespace Stable.Repository.Abstract
 {
     public interface IUnitOfWork : IAsyncDisposable
     {
-        IAccountRepository Accounts { get; } // unitOfWork.Accounts
+        IAccountRepository Accounts { get; }
         IAccountTypeRepository AccountTypes { get; }
         IAddressRepository Addresses { get; }
         IBalanceRepository Balances { get; }
         ICorporateUserRepository CorporateUsers { get; }
         IEmailRepository Emails { get; }
         IPasswordRepository Passwords { get; }
-        IIndividualUserRepository IndividualUsers { get; } //_unitOfWork.People.CreateAsync(person); //_unitOfWork.SaveAsync();
+        IIndividualUserRepository IndividualUsers { get; }
         ITransactionRepository Transactions { get; }
         IUserRepository Users { get; }
-
-
+        IUserIpAddressRepository UserIpAddresses { get; }
         Task<int> SaveAsync();
-
 
     }
 }
