@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Requests;
-using System.Text.RegularExpressions;
 
 namespace Stable.API.Validators
 {

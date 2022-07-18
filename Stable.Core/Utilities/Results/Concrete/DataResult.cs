@@ -1,5 +1,4 @@
 ﻿using Stable.Core.Utilities.Results.ComplexTypes.Enums;
-using System;
 
 namespace Stable.Core.Utilities.Results.Concrete
 {

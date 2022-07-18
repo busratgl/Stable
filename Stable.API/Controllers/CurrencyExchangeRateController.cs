@@ -1,15 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Stable.Business.Abstract.Processes;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.CurrencyExchangeRate;
 using Stable.Core.Utilities.Results.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Stable.API.Controllers
 {

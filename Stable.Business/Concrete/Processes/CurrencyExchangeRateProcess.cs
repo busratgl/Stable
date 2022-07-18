@@ -2,15 +2,7 @@
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.CurrencyExchangeRate;
-using Stable.Core.Utilities.Results.Concrete;
 using Stable.Repository.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Stable.Business.Concrete.Processes
 {

@@ -4,9 +4,7 @@ using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.GetMyTransactionDto;
 using Stable.Repository.Abstract;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

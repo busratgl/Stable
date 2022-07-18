@@ -3,9 +3,6 @@ using Stable.Business.Abstract.Caching;
 using Stable.Business.Concrete.Extensions;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Stable.Business.Concrete.Caching

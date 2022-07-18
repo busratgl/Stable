@@ -1,14 +1,10 @@
 ﻿using Stable.Business.Abstract.Processes;
-using Stable.Business.Concrete.Responses;
 using Stable.Business.Concrete.Responses.UserRegisterDto;
 using Stable.Business.Requests;
 using Stable.Entity.Concrete;
 using Stable.Repository.Abstract;
-using Stable.Repository.Concrete;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

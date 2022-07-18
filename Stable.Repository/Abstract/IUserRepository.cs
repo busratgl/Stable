@@ -1,10 +1,4 @@
-﻿using Stable.Core.Utilities.Results;
-using Stable.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Stable.Entity.Concrete;
 
 namespace Stable.Repository.Abstract
 {

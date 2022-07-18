@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stable.Business.Abstract.Processes;
-using Stable.Business.Concrete.Processes;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.CreateAccountDto;
 using Stable.Business.Concrete.Responses.GetMyAccountDto;

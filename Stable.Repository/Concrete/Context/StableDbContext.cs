@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Entity.Concrete;
 using Stable.Repository.Concrete.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Stable.Repository.Concrete.Context
 {

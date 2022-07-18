@@ -3,7 +3,6 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Stable.Business.Concrete.Autofac;
-using System;
 
 namespace Stable.API
 {
