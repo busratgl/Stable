@@ -9,7 +9,6 @@ namespace Stable.Business.Concrete.Responses.GetMyAccountDto
         {
             this.Transactions = new List<TransactionDto>();
         }
-        public long AccountId { get; set; }
         public string Name { get; set; }
         public string AccountNumber { get; set; }
         public string AccountTypeName { get; set; }
