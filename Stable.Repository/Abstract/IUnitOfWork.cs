@@ -15,7 +15,6 @@ namespace Stable.Repository.Abstract
         IIndividualUserRepository IndividualUsers { get; }
         ITransactionRepository Transactions { get; }
         IUserRepository Users { get; }
-        IUserIpAddressRepository UserIpAddresses { get; }
         Task<int> SaveAsync();
     }
 }

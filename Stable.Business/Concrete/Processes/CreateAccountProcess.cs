@@ -53,9 +53,7 @@ namespace Stable.Business.Concrete.Processes
                     {
                         Name = createAccountRequest.CurrencyType
                     }
-
                 },
-
             };
 
             user.Accounts.Add(account);

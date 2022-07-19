@@ -25,7 +25,7 @@ namespace Stable.Business.Concrete.Processes
         }
         public async Task<UserLoginDto> ExecuteAsync(UserLoginRequest userLoginRequest, CancellationToken cancellationToken)
         {
-            var user = await _unitOfWork.Users.GetQuery().AsNoTracking().FirstOrDefaultAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userLoginRequest.Email)
+            var user = await _unitOfWork.Users.GetQuery().FirstOrDefaultAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userLoginRequest.Email)
             && u.Passwords.Any(u => u.IsActivePassword && u.PasswordText == userLoginRequest.Password));
 
             if (user == null)
@@ -42,13 +42,9 @@ namespace Stable.Business.Concrete.Processes
                 return cacheResult;
             }
 
-            var userIpAddress = new UserIpAddress()
-            {
-                RemoteIpAddress = userLoginRequest.RemoteIpAddress,
-                UserId= user.Id
-            };
+            user.RemoteIpAddress = userLoginRequest.RemoteIpAddress;
 
-            await _unitOfWork.UserIpAddresses.CreateAsync(userIpAddress);
+            await _unitOfWork.Users.UpdateAsync(user);
             await _unitOfWork.SaveAsync();
 
             var token = TokenHelper.GenerateAccessToken(user.Id);

@@ -12,14 +12,13 @@ namespace Stable.Entity.Concrete
             this.Accounts = new List<Account>();
             this.Addresses = new List<Address>();
             this.Passwords = new List<Password>();
-            this.UserIpAddresses = new List<UserIpAddress>();
         }
         public string PhoneNumber { get; set; }
         public List<Email> Emails { get; set; }
         public List<Account> Accounts { get; set; }
         public List<Address> Addresses { get; set; }
         public List<Password> Passwords { get; set; }
-        public List<UserIpAddress> UserIpAddresses { get; set; }
+        public string RemoteIpAddress { get; set; }
         public CorporateUser CorporateUser { get; set; }
         public IndividualUser IndividualUser { get; set; }
         public UserType UserType { get; set; }

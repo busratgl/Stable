@@ -18,7 +18,6 @@ namespace Stable.Repository.Concrete
         private IndividualUserRepository _individualUserRepository;
         private TransactionRepository _transactionRepository;
         private UserRepository _userRepository;
-        private UserIpAddressRepository _userIpAddressRepository;
 
         public UnitOfWork(StableDbContext context)
         {
@@ -34,7 +33,6 @@ namespace Stable.Repository.Concrete
         public ITransactionRepository Transactions => _transactionRepository ?? new TransactionRepository(_context);
         public ICorporateUserRepository CorporateUsers => _corporateUserRepository ?? new CorporateUserRepository(_context);
         public IIndividualUserRepository IndividualUsers => _individualUserRepository ?? new IndividualUserRepository(_context);
-        public IUserIpAddressRepository UserIpAddresses => _userIpAddressRepository ?? new UserIpAddressRepository(_context);
         public async ValueTask DisposeAsync()
         {
             await _context.DisposeAsync();
