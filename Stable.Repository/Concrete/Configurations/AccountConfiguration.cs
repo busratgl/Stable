@@ -19,7 +19,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(a => a.ModifiedDate).IsRequired();
             builder.Property(a => a.IsDeleted).IsRequired();
 
-
             builder.HasOne<User>(a => a.User).WithMany(u => u.Accounts).HasForeignKey(a => a.UserId);
             builder.HasOne<Balance>(a => a.Balance).WithOne(b => b.Account).HasForeignKey<Account>(a => a.BalanceId);
             builder.HasOne<AccountType>(a => a.AccountType).WithMany(acty => acty.Accounts).HasForeignKey(a => a.AccountTypeId);

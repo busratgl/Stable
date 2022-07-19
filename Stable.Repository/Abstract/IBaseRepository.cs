@@ -17,7 +17,5 @@ namespace Stable.Repository.Abstract
         IQueryable<T> GetQuery();
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task<int> CountAsync(Expression<Func<T, bool>> expression);
-
-
     }
 }

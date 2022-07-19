@@ -16,7 +16,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(adr => adr.IsDeleted).IsRequired();
             builder.Property(adr => adr.IsActiveAddress).IsRequired();
 
-
             builder.HasOne<User>(adr => adr.User).WithMany(u => u.Addresses).HasForeignKey(adr => adr.UserId);
             builder.ToTable("Addresses");
         }

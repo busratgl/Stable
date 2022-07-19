@@ -10,6 +10,7 @@ namespace Stable.Entity.Concrete
         {
             this.Transactions = new List<Transaction>();
         }
+
         public string Name { get; set; }
         public string AccountNumber { get; set; }
         public AccountType AccountType { get; set; }
@@ -21,6 +22,5 @@ namespace Stable.Entity.Concrete
         public Balance Balance { get; set; }
         public long BalanceId { get; set; }
         public bool IsActiveAccount { get; set; }
-
     }
 }

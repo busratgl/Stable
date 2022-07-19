@@ -17,7 +17,6 @@ namespace Stable.Business.Concrete.Processes
         {
             _unitOfWork = unitOfWork;
         }
-
         public async Task<GetMyAccountDto> ExecuteAsync(GetMyAccountRequest getMyAccountRequest, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.Users.GetQuery()

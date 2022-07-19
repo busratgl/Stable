@@ -11,6 +11,5 @@ namespace Stable.Entity.Concrete
         public DateTime? BirthDate { get; set; }
         public User User { get; set; }
         public long UserId { get; set; }
-
     }
 }

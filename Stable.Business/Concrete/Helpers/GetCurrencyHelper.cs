@@ -40,7 +40,6 @@ namespace Stable.Business.Concrete.Helpers
                 result.Currencies.Add(currencyRate);
             }
 
-
             return result;
         }
     }

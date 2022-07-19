@@ -13,12 +13,10 @@ namespace Stable.Business.Concrete.Processes
     public class UserRegisterProcess : IUserRegisterProcess
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public UserRegisterProcess(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
         public async Task<UserRegisterDto> ExecuteAsync(UserRegisterRequest userRegisterRequest, CancellationToken cancellationToken)
         {
             var isExist = await _unitOfWork.Users.AnyAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userRegisterRequest.Email));
@@ -46,6 +44,7 @@ namespace Stable.Business.Concrete.Processes
                 EmailAddress = userRegisterRequest.Email,
                 IsActiveEmailAddress = true,
             };
+
             user.Emails.Add(email);
 
             var address = new Address()
@@ -66,11 +65,10 @@ namespace Stable.Business.Concrete.Processes
                 {
                     Amount = 0,
                     CurrencyTypeId = userRegisterRequest.CurrencyTypeId
-
                 },
+
                 Name = userRegisterRequest.AccountName,
                 AccountTypeId = userRegisterRequest.AccountTypeId,
-
             };
 
             user.Accounts.Add(account);
@@ -93,7 +91,6 @@ namespace Stable.Business.Concrete.Processes
                 {
                     Name = userRegisterRequest.CorporateName,
                     TaxNumber = userRegisterRequest.TaxNumber,
-
                 };
                 user.CorporateUser = corporateUser;
             }

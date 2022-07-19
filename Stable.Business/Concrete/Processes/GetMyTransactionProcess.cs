@@ -42,7 +42,6 @@ namespace Stable.Business.Concrete.Processes
                 };
 
                 getMyTransactionDto.Transactions.Add(transactionDto);
-               
             }
 
             return getMyTransactionDto;

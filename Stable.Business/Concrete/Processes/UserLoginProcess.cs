@@ -23,7 +23,6 @@ namespace Stable.Business.Concrete.Processes
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }
-
         public async Task<UserLoginDto> ExecuteAsync(UserLoginRequest userLoginRequest, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.Users.GetQuery().AsNoTracking().FirstOrDefaultAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userLoginRequest.Email)
@@ -35,14 +34,13 @@ namespace Stable.Business.Concrete.Processes
             }
 
             var key = "UserLoginProcess:" + userLoginRequest.Email + userLoginRequest.Password;
-            var isExist = await _cacheService.KeyExistAsync(key);
 
+            var isExist = await _cacheService.KeyExistAsync(key);
             if (isExist)
             {
                 var cacheResult = await _cacheService.GetAsync<UserLoginDto>(key);
                 return cacheResult;
             }
-
 
             var userIpAddress = new UserIpAddress()
             {
@@ -53,19 +51,15 @@ namespace Stable.Business.Concrete.Processes
             await _unitOfWork.UserIpAddresses.CreateAsync(userIpAddress);
             await _unitOfWork.SaveAsync();
 
-
             var token = TokenHelper.GenerateAccessToken(user.Id);
             var result = new UserLoginDto()
             {
-
                 Token = token,
-
             };
 
             await _cacheService.SetAsync(key, result);
 
             return result;
-
         }
     }
 }

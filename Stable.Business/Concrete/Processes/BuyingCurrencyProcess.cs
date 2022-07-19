@@ -48,14 +48,12 @@ namespace Stable.Business.Concrete.Processes
             var getCurrencyModel = GetCurrencyHelper.GetCurrency(DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, true);
 
             var sourceCurrencyName = getCurrencyModel.Currencies.FirstOrDefault(c => c.Name == buyingCurrencyRequest.SourceCurrency);
-
             if (sourceCurrencyName != null)
             {
                 sourceRate = sourceCurrencyName.ForexBuying;
             }
 
             var targetCurrencyName = getCurrencyModel.Currencies.FirstOrDefault(c => c.Name.ToLower() == (buyingCurrencyRequest.TargetCurrency.ToLower() == "Dollar".ToLower() ? "ABD DOLARI".ToLower() : buyingCurrencyRequest.TargetCurrency.ToLower()));
-
             if (targetCurrencyName != null)
             {
                 targetRate = targetCurrencyName.ForexSelling;

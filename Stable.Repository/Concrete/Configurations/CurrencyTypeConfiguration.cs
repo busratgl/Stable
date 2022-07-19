@@ -17,7 +17,6 @@ namespace Stable.Repository.Concrete.Configurations
 
             builder.ToTable("CurrencyTypes");
 
-
             builder.HasData(new CurrencyType()
             {
                 Id = 1,

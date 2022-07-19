@@ -6,6 +6,5 @@
         Passive = 1,
         Suspended = 2,
         Blocked = 3,
-
     }
 }

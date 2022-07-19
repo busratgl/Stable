@@ -17,7 +17,6 @@ namespace Stable.Repository.Concrete.Configurations
 
             builder.ToTable("AccountTypes");
 
-
             builder.HasData(new AccountType()
             {
                 Id = 1,

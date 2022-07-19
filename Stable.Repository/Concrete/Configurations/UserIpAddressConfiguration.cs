@@ -10,7 +10,7 @@ namespace Stable.Repository.Concrete.Configurations
         {
             builder.HasKey(uip => uip.Id);
             builder.Property(uip => uip.Id).ValueGeneratedOnAdd();
-            builder.Property(uip=> uip.RemoteIpAddress).IsRequired();
+            builder.Property(uip => uip.RemoteIpAddress).IsRequired();
             builder.Property(uip => uip.CreatedDate).IsRequired();
             builder.Property(uip => uip.ModifiedDate).IsRequired();
             builder.Property(uip => uip.IsDeleted).IsRequired();

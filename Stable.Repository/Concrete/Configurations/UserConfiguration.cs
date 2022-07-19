@@ -16,7 +16,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(u => u.ModifiedDate).IsRequired();
             builder.Property(u => u.IsDeleted).IsRequired();
 
-
             builder.ToTable("Users");
         }
     }

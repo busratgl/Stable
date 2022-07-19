@@ -20,7 +20,6 @@ namespace Stable.Business.Concrete.Processes
             var result = new CurrencyExchangeRateDto();
             var currencyResult = GetCurrencyHelper.GetCurrency(currencyExchangeRateRequest.Day, currencyExchangeRateRequest.Month, currencyExchangeRateRequest.Year, currencyExchangeRateRequest.IsToday);
 
-
             foreach (var currency in currencyResult.Currencies)
             {
                 var currencyExchangeRateItemDto = new CurrencyExchangeRateItemDto();
@@ -33,7 +32,6 @@ namespace Stable.Business.Concrete.Processes
                 currencyExchangeRateItemDto.ForexSelling = currency.ForexSelling;
 
                 result.Currencies.Add(currencyExchangeRateItemDto);
-
             }
 
             return result;

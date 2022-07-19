@@ -10,20 +10,14 @@ namespace Stable.Business.Concrete.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<LoggingInterceptor>();
-
             builder.RegisterType<UserRegisterProcess>().As<IUserRegisterProcess>().InstancePerLifetimeScope();
             builder.RegisterType<UserLoginProcess>().As<IUserLoginProcess>().InstancePerLifetimeScope();
-
-            builder.RegisterType<CurrencyExchangeRateProcess>()
-                .As<ICurrencyExchangeRateProcess>().InstancePerLifetimeScope();
-
+            builder.RegisterType<CurrencyExchangeRateProcess>().As<ICurrencyExchangeRateProcess>().InstancePerLifetimeScope();
             builder.RegisterType<GetMyAccountProcess>().As<IGetMyAccountProcess>().InstancePerLifetimeScope()
                 .EnableInterfaceInterceptors().InterceptedBy(typeof(LoggingInterceptor));
-
             builder.RegisterType<BuyingCurrencyProcess>().As<IBuyingCurrencyProcess>().InstancePerLifetimeScope();
             builder.RegisterType<CreateAccountProcess>().As<ICreateAccountProcess>().InstancePerLifetimeScope();
             builder.RegisterType<GetMyTransactionProcess>().As<IGetMyTransactionProcess>().InstancePerLifetimeScope();
-
         }
     }
 }

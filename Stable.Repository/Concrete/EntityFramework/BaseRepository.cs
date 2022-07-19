@@ -18,7 +18,6 @@ namespace Stable.Repository.Concrete.EntityFramework
         {
             _stableDbContext = stableDbContext;
         }
-
         public IQueryable<T> GetQuery()
         {
             IQueryable<T> query = _stableDbContext.Set<T>();
@@ -47,13 +46,10 @@ namespace Stable.Repository.Concrete.EntityFramework
         {
             return await _stableDbContext.Set<T>().CountAsync(expression);
         }
-
         public async Task DeleteAsync(T entity)
         {
             await Task.Run(() => { _stableDbContext.Set<T>().Remove(entity); });
-
         }
-
         public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> expression = null,
             params Expression<Func<T, object>>[] includeProperties)
         {
@@ -83,12 +79,9 @@ namespace Stable.Repository.Concrete.EntityFramework
         {
             await Task.Run(() => { _stableDbContext.Set<T>().Update(entity); });
         }
-
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
             return await _stableDbContext.Set<T>().AnyAsync(expression);
         }
-
-       
     }
 }

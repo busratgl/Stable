@@ -30,7 +30,6 @@ namespace Stable.Business.Concrete.Processes
                 .FirstOrDefaultAsync(u => u.Id == createAccountRequest.UserId);
 
             var isAccountAlreadyExist = user.Accounts.Any(a => a.AccountType.Name == createAccountRequest.AccountType && a.Balance.CurrencyType.Name == createAccountRequest.CurrencyType);
-
             if (isAccountAlreadyExist)
             {
                 throw new Exception("Oluşturmak istediğiniz hesap türünde hesabınız sistemimizde bulunmaktadır. İşleminize devam etmek istiyorsanız, lütfen başka bir hesap türü seçiniz.");

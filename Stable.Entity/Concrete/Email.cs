@@ -8,6 +8,5 @@ namespace Stable.Entity.Concrete
         public User User { get; set; }
         public long UserId { get; set; }
         public bool IsActiveEmailAddress { get; set; }
-
     }
 }

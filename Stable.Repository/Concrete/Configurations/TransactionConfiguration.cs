@@ -17,7 +17,6 @@ namespace Stable.Repository.Concrete.Configurations
 
             builder.HasOne<Account>(t => t.Account).WithMany(a => a.Transactions).HasForeignKey(t => t.AccountId);
             builder.ToTable("Transactions");
-
         }
     }
 }

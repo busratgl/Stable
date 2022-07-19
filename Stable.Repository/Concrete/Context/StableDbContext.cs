@@ -37,9 +37,7 @@ namespace Stable.Repository.Concrete.Context
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CurrencyTypeConfiguration());
 
-
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

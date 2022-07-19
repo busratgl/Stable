@@ -17,7 +17,6 @@ namespace Stable.Repository.Concrete.Configurations
             builder.Property(e => e.IsDeleted).IsRequired();
             builder.Property(e => e.IsActiveEmailAddress).IsRequired();
 
-
             builder.HasOne<User>(e => e.User).WithMany(u => u.Emails).HasForeignKey(e => e.UserId);
             builder.ToTable("Emails");
         }

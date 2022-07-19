@@ -17,6 +17,5 @@ namespace Stable.Repository.Abstract
         IUserRepository Users { get; }
         IUserIpAddressRepository UserIpAddresses { get; }
         Task<int> SaveAsync();
-
     }
 }

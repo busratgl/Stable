@@ -26,29 +26,19 @@ namespace Stable.Repository.Concrete
         }
         public IAccountRepository Accounts => _accountRepository ?? new AccountRepository(_context);
         public IAccountTypeRepository AccountTypes => _accountTypeRepository ?? new AccountTypeRepository(_context);
-
         public IAddressRepository Addresses => _addressRepository ?? new AddressRepository(_context);
-
         public IBalanceRepository Balances => _balanceRepository ?? new BalanceRepository(_context);
-
         public IEmailRepository Emails => _emailRepository ?? new EmailRepository(_context);
-
         public IPasswordRepository Passwords => _passwordRepository ?? new PasswordRepository(_context);
         public IUserRepository Users => _userRepository ?? new UserRepository(_context);
-
         public ITransactionRepository Transactions => _transactionRepository ?? new TransactionRepository(_context);
-
         public ICorporateUserRepository CorporateUsers => _corporateUserRepository ?? new CorporateUserRepository(_context);
-
         public IIndividualUserRepository IndividualUsers => _individualUserRepository ?? new IndividualUserRepository(_context);
-
         public IUserIpAddressRepository UserIpAddresses => _userIpAddressRepository ?? new UserIpAddressRepository(_context);
-
         public async ValueTask DisposeAsync()
         {
             await _context.DisposeAsync();
         }
-
         public async Task<int> SaveAsync()
         {
             return await _context.SaveChangesAsync();
