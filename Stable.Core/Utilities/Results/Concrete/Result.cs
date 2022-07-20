@@ -16,6 +16,15 @@ namespace Stable.Core.Utilities.Results.Concrete
             ResultStatus = resultStatus;
             Message = message;
         }
+
+        public Result(ResultStatus resultStatus, string message, string errorCode)
+        {
+            ResultStatus = resultStatus;
+            Message = message;
+            ErrorCode = errorCode;
+
+        }
+
         public Result(ResultStatus resultStatus, string message, Exception exception)
         {
             ResultStatus = resultStatus;
@@ -26,5 +35,6 @@ namespace Stable.Core.Utilities.Results.Concrete
         public ResultStatus ResultStatus { get; }
         public string Message { get; }
         public Exception Exception { get; }
+        public string ErrorCode { get; set; }
     }
 }

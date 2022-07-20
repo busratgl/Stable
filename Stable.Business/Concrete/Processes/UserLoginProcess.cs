@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Caching;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Exceptions;
+using Stable.Business.Concrete.Extensions;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.UserLoginDto;
-using Stable.Entity.Concrete;
 using Stable.Repository.Abstract;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,11 +26,11 @@ namespace Stable.Business.Concrete.Processes
         public async Task<UserLoginDto> ExecuteAsync(UserLoginRequest userLoginRequest, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.Users.GetQuery().FirstOrDefaultAsync(u => u.Emails.Any(u => u.IsActiveEmailAddress && u.EmailAddress == userLoginRequest.Email)
-            && u.Passwords.Any(u => u.IsActivePassword && u.PasswordText == userLoginRequest.Password));
+            && u.Passwords.Any(u => u.IsActivePassword && u.PasswordText == userLoginRequest.Password.MD5Encryption()));
 
             if (user == null)
             {
-                throw new Exception("Bu email adresine sahip kullanıcı sistemde kayıtlı değildir.");
+                throw new LoginException("Bu email adresine sahip kullanıcı sistemde kayıtlı değildir.", "008");
             }
 
             var key = "UserLoginProcess:" + userLoginRequest.Email + userLoginRequest.Password;

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.GetMyTransactionDto;
 using Stable.Repository.Abstract;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,7 +29,7 @@ namespace Stable.Business.Concrete.Processes
             var selectedAccount = user.Accounts.FirstOrDefault(a=>a.Id == getMyTransactionRequest.AccountId);
             if(selectedAccount != null)
             {
-                throw new Exception("Seçilen hesap türünde hesabınız bulunmadığından ötürü hesap işlemleriniz görüntülenememektedir.İşleminize devam etmek istiyorsanız, lütfen mevcut hesabınızı seçiniz.");
+                throw new BusinessException("Seçilen hesap türünde hesabınız bulunmadığından ötürü hesap işlemleriniz görüntülenememektedir.İşleminize devam etmek istiyorsanız, lütfen mevcut hesabınızı seçiniz.", "007");
             }
 
             var getMyTransactionDto = new GetMyTransactionDto();

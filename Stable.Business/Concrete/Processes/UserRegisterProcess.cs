@@ -1,4 +1,6 @@
 ﻿using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Exceptions;
+using Stable.Business.Concrete.Extensions;
 using Stable.Business.Concrete.Responses.UserRegisterDto;
 using Stable.Business.Requests;
 using Stable.Entity.Concrete;
@@ -23,7 +25,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (isExist)
             {
-                throw new Exception("Bu email adresine sahip kullanıcı sistemde zaten kayıtlıdır.");
+                throw new RegisteredUserException("Bu email adresine sahip kullanıcı sistemde zaten kayıtlıdır.", "009");
             }
 
             var user = new User()
@@ -33,7 +35,7 @@ namespace Stable.Business.Concrete.Processes
 
             var password = new Password()
             {
-                PasswordText = userRegisterRequest.Password,
+                PasswordText = userRegisterRequest.Password.MD5Encryption(),
                 IsActivePassword = true,
             };
 

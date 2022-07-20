@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.GetMyAccountDto;
 using Stable.Repository.Abstract;
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,7 +31,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (user.Accounts == null)
             {
-                throw new Exception("Hesap bilgileriniz görüntülenememektedir.");
+                throw new BusinessException("Hesap bilgileriniz görüntülenememektedir.", "006");
             }
 
             var result = new GetMyAccountDto();

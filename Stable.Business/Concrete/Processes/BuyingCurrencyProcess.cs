@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.BuyingCurrencyDto;
@@ -26,7 +27,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (user == null)
             {
-                throw new Exception("Bu kullanıcı sistemde kayıtlı değildir.");
+                throw new LoginException("Bu kullanıcı sistemde kayıtlı değildir.", "008");
             }
 
             var balanceIds = user.Accounts.Select(a => a.BalanceId).ToList();
@@ -34,13 +35,13 @@ namespace Stable.Business.Concrete.Processes
             var sourceBalance = await _unitOfWork.Balances.GetAsync(x => x.CurrencyType.Name == buyingCurrencyRequest.SourceCurrency && balanceIds.Contains(x.Id));
             if (sourceBalance == null)
             {
-                throw new Exception(buyingCurrencyRequest.SourceCurrency + "Tipinde bir hesabınız bulunmamaktadır.");
+                throw new BusinessException(buyingCurrencyRequest.SourceCurrency + "Tipinde bir hesabınız bulunmamaktadır.", "002");
             }
 
             var targetBalance = await _unitOfWork.Balances.GetAsync(x => x.CurrencyType.Name == buyingCurrencyRequest.TargetCurrency && balanceIds.Contains(x.Id));
             if (targetBalance == null)
             {
-                throw new Exception(buyingCurrencyRequest.TargetCurrency + "Tipinde bir hesabınız bulunmamaktadır.");
+                throw new BusinessException(buyingCurrencyRequest.TargetCurrency + "Tipinde bir hesabınız bulunmamaktadır.", "003");
             }
 
             var sourceRate = 1m;
@@ -61,7 +62,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (sourceBalance.Amount < buyingCurrencyRequest.Amount)
             {
-                throw new Exception("Bakiyeniz yetersizdir.");
+                throw new InsufficientBalanceException("Bakiyeniz yetersizdir.", "004");
             }
 
             sourceBalance.Amount -= buyingCurrencyRequest.Amount;

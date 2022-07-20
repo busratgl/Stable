@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.CreateAccountDto;
 using Stable.Entity.Concrete;
@@ -32,7 +33,7 @@ namespace Stable.Business.Concrete.Processes
             var isAccountAlreadyExist = user.Accounts.Any(a => a.AccountType.Name == createAccountRequest.AccountType && a.Balance.CurrencyType.Name == createAccountRequest.CurrencyType);
             if (isAccountAlreadyExist)
             {
-                throw new Exception("Oluşturmak istediğiniz hesap türünde hesabınız sistemimizde bulunmaktadır. İşleminize devam etmek istiyorsanız, lütfen başka bir hesap türü seçiniz.");
+                throw new BusinessException("Oluşturmak istediğiniz hesap türünde hesabınız sistemimizde bulunmaktadır. İşleminize devam etmek istiyorsanız, lütfen başka bir hesap türü seçiniz.", "005");
             }
 
             var account = new Account()
