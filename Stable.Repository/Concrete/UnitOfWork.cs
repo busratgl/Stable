@@ -33,10 +33,6 @@ namespace Stable.Repository.Concrete
         public ITransactionRepository Transactions => _transactionRepository ?? new TransactionRepository(_context);
         public ICorporateUserRepository CorporateUsers => _corporateUserRepository ?? new CorporateUserRepository(_context);
         public IIndividualUserRepository IndividualUsers => _individualUserRepository ?? new IndividualUserRepository(_context);
-        public async ValueTask DisposeAsync()
-        {
-            await _context.DisposeAsync();
-        }
         public async Task<int> SaveAsync()
         {
             return await _context.SaveChangesAsync();

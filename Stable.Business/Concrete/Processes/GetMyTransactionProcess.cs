@@ -24,7 +24,7 @@ namespace Stable.Business.Concrete.Processes
             var user = await _unitOfWork.Users.GetQuery()
             .Include(u=>u.Accounts)
             .ThenInclude(a=>a.Transactions)
-            .FirstOrDefaultAsync(u => u.Id == getMyTransactionRequest.UserId);
+            .FirstOrDefaultAsync(u => u.Id == getMyTransactionRequest.UserId, cancellationToken: cancellationToken);
 
             var selectedAccount = user.Accounts.FirstOrDefault(a=>a.Id == getMyTransactionRequest.AccountId);
             if(selectedAccount != null)

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Stable.Repository.Abstract
 {
-    public interface IUnitOfWork : IAsyncDisposable
+    public interface IUnitOfWork
     {
         IAccountRepository Accounts { get; }
         IAccountTypeRepository AccountTypes { get; }

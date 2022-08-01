@@ -28,7 +28,7 @@ namespace Stable.Business.Concrete.Processes
                 .Include(a => a.Accounts)
                 .ThenInclude(a => a.Balance)
                 .ThenInclude(b => b.CurrencyType)
-                .FirstOrDefaultAsync(u => u.Id == createAccountRequest.UserId);
+                .FirstOrDefaultAsync(u => u.Id == createAccountRequest.UserId, cancellationToken: cancellationToken);
 
             var isAccountAlreadyExist = user.Accounts.Any(a => a.AccountType.Name == createAccountRequest.AccountType && a.Balance.CurrencyType.Name == createAccountRequest.CurrencyType);
             if (isAccountAlreadyExist)

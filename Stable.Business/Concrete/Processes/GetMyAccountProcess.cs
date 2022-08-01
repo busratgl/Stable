@@ -26,7 +26,7 @@ namespace Stable.Business.Concrete.Processes
                 .ThenInclude(a => a.Balance)
                 .ThenInclude(b => b.CurrencyType)
                 .Include(a => a.Accounts)
-                .ThenInclude(a => a.Transactions).FirstOrDefaultAsync(u => u.Id == getMyAccountRequest.UserId && u.Accounts.Any(a => a.Status == Core.Enums.AccountStatus.Active));
+                .ThenInclude(a => a.Transactions).FirstOrDefaultAsync(u => u.Id == getMyAccountRequest.UserId && u.Accounts.Any(a => a.Status == Core.Enums.AccountStatus.Active), cancellationToken: cancellationToken);
 
 
             if (user.Accounts == null)
@@ -38,15 +38,17 @@ namespace Stable.Business.Concrete.Processes
 
             foreach (var account in user.Accounts)
             {
-                var accountDto = new AccountDto();
-                accountDto.Status = account.Status;
-                accountDto.AccountNumber = account.AccountNumber;
-                accountDto.AccountTypeName = account.AccountType.Name;
-                accountDto.Name = account.Name;
-                accountDto.Balance = new BalanceDto()
+                var accountDto = new AccountDto
                 {
-                    Amount = account.Balance.Amount,
-                    CurrencyTypeName = account.Balance.CurrencyType.Name,
+                    Status = account.Status,
+                    AccountNumber = account.AccountNumber,
+                    AccountTypeName = account.AccountType.Name,
+                    Name = account.Name,
+                    Balance = new BalanceDto()
+                    {
+                        Amount = account.Balance.Amount,
+                        CurrencyTypeName = account.Balance.CurrencyType.Name,
+                    }
                 };
 
                 foreach (var transaction in account.Transactions)
