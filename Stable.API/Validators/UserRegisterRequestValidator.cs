@@ -17,6 +17,8 @@ namespace Stable.API.Validators
             this.RuleFor(u => u.BirthDate).NotEmpty().LessThanOrEqualTo(System.DateTime.Now.AddYears(-18));
             this.RuleFor(u => u.IdentityNumber).NotEmpty();
             this.RuleFor(u => u.Password).NotEmpty().Length(9, 15).Must(ValidationHelper.CheckPasswordValidation);
+            this.RuleFor(u => u.CurrencyTypeId).NotEmpty().InclusiveBetween(1, 22);
+            this.RuleFor(u => u.AccountTypeId).NotEmpty().InclusiveBetween(1, 4);
         }
 
     }
