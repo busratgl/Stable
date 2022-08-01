@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Constants;
 using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Helpers;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.BuyingCurrencyDto;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using Stable.Entity.Concrete;
 using Stable.Repository.Abstract;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Processes
 {
@@ -24,11 +25,11 @@ namespace Stable.Business.Concrete.Processes
         public async Task<BuyingCurrencyDto> ExecuteAsync(BuyingCurrencyRequest buyingCurrencyRequest, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.Users.GetQuery()
-                .Include(u => u.Accounts).AsNoTracking().FirstOrDefaultAsync(u => u.Id == buyingCurrencyRequest.UserId && u.Accounts.Any(a => a.Status == AccountStatus.Active));
+                .Include(u => u.Accounts).AsNoTracking().FirstOrDefaultAsync(u => u.Id == buyingCurrencyRequest.UserId && u.Accounts.Any(a => a.Status == AccountStatus.Active), cancellationToken: cancellationToken);
 
             if (user == null)
             {
-                throw new LoginException("Bu kullanıcı sistemde kayıtlı değildir.", "008");
+                throw new LoginException(ExceptionMessage.UserNotRegistered, "008");
             }
 
             var balanceIds = user.Accounts.Select(a => a.BalanceId).ToList();
@@ -36,13 +37,13 @@ namespace Stable.Business.Concrete.Processes
             var sourceBalance = await _unitOfWork.Balances.GetAsync(x => x.CurrencyType.Name == buyingCurrencyRequest.SourceCurrency && balanceIds.Contains(x.Id));
             if (sourceBalance == null)
             {
-                throw new BusinessException(buyingCurrencyRequest.SourceCurrency + "Tipinde bir hesabınız bulunmamaktadır.", "002");
+                throw new BusinessException(buyingCurrencyRequest.SourceCurrency + ExceptionMessage.AccountTypeNotFound, "002");
             }
 
             var targetBalance = await _unitOfWork.Balances.GetAsync(x => x.CurrencyType.Name == buyingCurrencyRequest.TargetCurrency && balanceIds.Contains(x.Id));
             if (targetBalance == null)
             {
-                throw new BusinessException(buyingCurrencyRequest.TargetCurrency + "Tipinde bir hesabınız bulunmamaktadır.", "003");
+                throw new BusinessException(buyingCurrencyRequest.TargetCurrency + ExceptionMessage.AccountTypeNotFound, "003");
             }
 
             var sourceRate = 1m;
@@ -63,7 +64,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (sourceBalance.Amount < buyingCurrencyRequest.Amount)
             {
-                throw new InsufficientBalanceException("Bakiyeniz yetersizdir.", "004");
+                throw new InsufficientBalanceException(ExceptionMessage.InsufficientBalance, "004");
             }
 
             sourceBalance.Amount -= buyingCurrencyRequest.Amount;

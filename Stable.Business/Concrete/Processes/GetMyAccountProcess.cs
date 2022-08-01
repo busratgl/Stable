@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Constants;
 using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.GetMyAccountDto;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using Stable.Repository.Abstract;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Processes
 {
@@ -32,7 +33,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (user.Accounts == null)
             {
-                throw new BusinessException("Hesap bilgileriniz görüntülenememektedir.", "006");
+                throw new BusinessException(ExceptionMessage.AccountInformationNotVisible, "006");
             }
 
             var result = new GetMyAccountDto();

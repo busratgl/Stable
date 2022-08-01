@@ -1,15 +1,16 @@
 ﻿using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Constants;
 using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Extensions;
 using Stable.Business.Concrete.Responses.UserRegisterDto;
 using Stable.Business.Requests;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using Stable.Entity.Concrete;
 using Stable.Repository.Abstract;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Processes
 {
@@ -26,7 +27,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (isExist)
             {
-                throw new RegisteredUserException("Bu email adresine sahip kullanıcı sistemde zaten kayıtlıdır.", "009");
+                throw new RegisteredUserException(ExceptionMessage.UserAlreadyRegistered, "009");
             }
 
             var user = new User()

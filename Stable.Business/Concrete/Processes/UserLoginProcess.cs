@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Caching;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Constants;
 using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Extensions;
 using Stable.Business.Concrete.Helpers;
@@ -30,7 +31,7 @@ namespace Stable.Business.Concrete.Processes
 
             if (user == null)
             {
-                throw new LoginException("Bu email adresine sahip kullanıcı sistemde kayıtlı değildir.", "008");
+                throw new LoginException(ExceptionMessage.UserNotRegistered, "008");
             }
 
             var key = "UserLoginProcess:" + userLoginRequest.Email + userLoginRequest.Password;

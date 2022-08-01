@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Stable.Business.Abstract.Processes;
+using Stable.Business.Concrete.Constants;
 using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Requests;
 using Stable.Business.Concrete.Responses.GetMyTransactionDto;
@@ -22,14 +23,14 @@ namespace Stable.Business.Concrete.Processes
         public async Task<GetMyTransactionDto> ExecuteAsync(GetMyTransactionRequest getMyTransactionRequest, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.Users.GetQuery()
-            .Include(u=>u.Accounts)
-            .ThenInclude(a=>a.Transactions)
+            .Include(u => u.Accounts)
+            .ThenInclude(a => a.Transactions)
             .FirstOrDefaultAsync(u => u.Id == getMyTransactionRequest.UserId, cancellationToken: cancellationToken);
 
-            var selectedAccount = user.Accounts.FirstOrDefault(a=>a.Id == getMyTransactionRequest.AccountId);
-            if(selectedAccount != null)
+            var selectedAccount = user.Accounts.FirstOrDefault(a => a.Id == getMyTransactionRequest.AccountId);
+            if (selectedAccount != null)
             {
-                throw new BusinessException("Seçilen hesap türünde hesabınız bulunmadığından ötürü hesap işlemleriniz görüntülenememektedir.İşleminize devam etmek istiyorsanız, lütfen mevcut hesabınızı seçiniz.", "007");
+                throw new BusinessException(ExceptionMessage.AccountNotFound, "007");
             }
 
             var getMyTransactionDto = new GetMyTransactionDto();
