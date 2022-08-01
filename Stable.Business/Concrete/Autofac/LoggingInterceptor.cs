@@ -6,9 +6,9 @@ namespace Stable.Business.Concrete.Autofac
     {
         public void Intercept(IInvocation invocation)
         {
-            System.Diagnostics.Debug.WriteLine(invocation.Proxy.ToString() + "Started");
+            System.Diagnostics.Debug.WriteLine(invocation.Proxy + "Started");
             invocation.Proceed();
-            System.Diagnostics.Debug.WriteLine(invocation.Proxy.ToString() + "Finished");
+            System.Diagnostics.Debug.WriteLine(invocation.Proxy + "Finished");
         }
     }
 }

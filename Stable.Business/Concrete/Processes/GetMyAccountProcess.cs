@@ -7,6 +7,7 @@ using Stable.Repository.Abstract;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Processes
 {
@@ -26,7 +27,7 @@ namespace Stable.Business.Concrete.Processes
                 .ThenInclude(a => a.Balance)
                 .ThenInclude(b => b.CurrencyType)
                 .Include(a => a.Accounts)
-                .ThenInclude(a => a.Transactions).FirstOrDefaultAsync(u => u.Id == getMyAccountRequest.UserId && u.Accounts.Any(a => a.Status == Core.Enums.AccountStatus.Active), cancellationToken: cancellationToken);
+                .ThenInclude(a => a.Transactions).FirstOrDefaultAsync(u => u.Id == getMyAccountRequest.UserId && u.Accounts.Any(a => a.Status == AccountStatus.Active), cancellationToken: cancellationToken);
 
 
             if (user.Accounts == null)

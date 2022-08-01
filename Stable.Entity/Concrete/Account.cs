@@ -1,6 +1,6 @@
 ﻿using Stable.Core.Entities.Abstract;
-using Stable.Core.Enums;
 using System.Collections.Generic;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Entity.Concrete
 {

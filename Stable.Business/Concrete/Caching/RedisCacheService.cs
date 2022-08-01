@@ -15,27 +15,27 @@ namespace Stable.Business.Concrete.Caching
         public RedisCacheService(IConfiguration configuration)
         {
             _configuration = configuration;
-          
+
             var connectionString = _configuration.GetSection("RedisConfiguration:ConnectionString")?.Value;
 
-            ConfigurationOptions options = new ConfigurationOptions
+            var configurationOptions = new ConfigurationOptions
             {
                 EndPoints =
                 {
-                    connectionString 
+                    connectionString
                 },
                 AbortOnConnectFail = false,
                 AsyncTimeout = 10000,
                 ConnectTimeout = 10000
             };
 
-            _client = ConnectionMultiplexer.Connect(options);         
+            _client = ConnectionMultiplexer.Connect(configurationOptions);
         }
 
         public void Set(string key, string value)
         {
             var cachettl = int.Parse(_configuration.GetSection("RedisConfiguration:Cachettl").Value);
-            _client.GetDatabase().StringSet(key, value,TimeSpan.FromMinutes(cachettl));
+            _client.GetDatabase().StringSet(key, value, TimeSpan.FromMinutes(cachettl));
         }
 
         public void Set<T>(string key, T value) where T : class

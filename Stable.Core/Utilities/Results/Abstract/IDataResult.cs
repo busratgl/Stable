@@ -1,6 +1,4 @@
-﻿using Stable.Core.Utilities.Results.Abstract;
-
-namespace Stable.Core.Utilities.Results
+﻿namespace Stable.Core.Utilities.Results.Abstract
 {
     public interface IDataResult<out T> : IResult
     {

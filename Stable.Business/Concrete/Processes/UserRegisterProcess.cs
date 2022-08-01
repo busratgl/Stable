@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Processes
 {
@@ -35,7 +36,7 @@ namespace Stable.Business.Concrete.Processes
 
             var password = new Password()
             {
-                PasswordText = userRegisterRequest.Password.MD5Encryption(),
+                PasswordText = userRegisterRequest.Password.Md5Encryption(),
                 IsActivePassword = true,
             };
 
@@ -62,7 +63,7 @@ namespace Stable.Business.Concrete.Processes
             var account = new Account()
             {
                 AccountNumber = Guid.NewGuid().ToString().Substring(0, 34),
-                Status = Core.Enums.AccountStatus.Active,
+                Status = AccountStatus.Active,
                 Balance = new Balance()
                 {
                     Amount = 0,
@@ -75,7 +76,7 @@ namespace Stable.Business.Concrete.Processes
 
             user.Accounts.Add(account);
 
-            if (userRegisterRequest.UserType == Core.Enums.UserType.Individual)
+            if (userRegisterRequest.UserType == UserType.Individual)
             {
                 var individualUser = new IndividualUser()
                 {

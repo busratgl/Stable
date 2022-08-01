@@ -1,5 +1,5 @@
-﻿using Stable.Core.Enums;
-using System;
+﻿using System;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Requests
 {

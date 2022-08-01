@@ -10,6 +10,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Processes
 {
@@ -23,7 +24,7 @@ namespace Stable.Business.Concrete.Processes
         public async Task<BuyingCurrencyDto> ExecuteAsync(BuyingCurrencyRequest buyingCurrencyRequest, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.Users.GetQuery()
-                .Include(u => u.Accounts).AsNoTracking().FirstOrDefaultAsync(u => u.Id == buyingCurrencyRequest.UserId && u.Accounts.Any(a => a.Status == Core.Enums.AccountStatus.Active));
+                .Include(u => u.Accounts).AsNoTracking().FirstOrDefaultAsync(u => u.Id == buyingCurrencyRequest.UserId && u.Accounts.Any(a => a.Status == AccountStatus.Active));
 
             if (user == null)
             {

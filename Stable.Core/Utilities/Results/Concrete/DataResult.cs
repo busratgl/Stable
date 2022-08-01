@@ -1,4 +1,5 @@
-﻿using Stable.Core.Utilities.Results.ComplexTypes.Enums;
+﻿using Stable.Core.Utilities.Results.Abstract;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Core.Utilities.Results.Concrete
 {

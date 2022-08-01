@@ -1,5 +1,5 @@
-﻿using Stable.Core.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
 namespace Stable.Business.Concrete.Responses.GetMyAccountDto
 {

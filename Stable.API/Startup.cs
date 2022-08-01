@@ -45,7 +45,7 @@ namespace Stable.API
             {
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true;
-                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidIssuer = "BankingSystem",
                     ValidAudience = "BankingSystemServices",

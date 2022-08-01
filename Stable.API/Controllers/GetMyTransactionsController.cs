@@ -26,8 +26,10 @@ namespace Stable.API.Controllers
             var identity = HttpContext.User.Identity as ClaimsIdentity;
             var userId = long.Parse(identity.Claims.FirstOrDefault(u => u.Type == "userId").Value);
 
-            var getMyTransactionRequest = new GetMyTransactionRequest();
-            getMyTransactionRequest.UserId = userId;
+            var getMyTransactionRequest = new GetMyTransactionRequest
+            {
+                UserId = userId
+            };
 
             var result = await _getMyTransactionProcess.ExecuteAsync(getMyTransactionRequest, cancellationToken);
 

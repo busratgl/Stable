@@ -11,20 +11,20 @@ namespace Stable.Business.Concrete.Extensions
             return string.IsNullOrEmpty(value) ? null : JsonConvert.DeserializeObject<T>(value);
         }
 
-        public static string MD5Encryption(this string text)
+        public static string Md5Encryption(this string text)
         {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            var md5CryptoServiceProvider = new MD5CryptoServiceProvider();
             byte[] array = Encoding.UTF8.GetBytes(text);
 
-            array = md5.ComputeHash(array);
-            StringBuilder sb = new StringBuilder();
+            array = md5CryptoServiceProvider.ComputeHash(array);
+            var stringBuilder = new StringBuilder();
 
             foreach (byte ba in array)
             {
-                sb.Append(ba.ToString("x2").ToLower());
+                stringBuilder.Append(ba.ToString("x2").ToLower());
             }
 
-            return sb.ToString();
+            return stringBuilder.ToString();
         }
     }
 }

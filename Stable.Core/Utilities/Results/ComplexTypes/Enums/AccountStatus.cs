@@ -1,4 +1,4 @@
-﻿namespace Stable.Core.Enums
+﻿namespace Stable.Core.Utilities.Results.ComplexTypes.Enums
 {
     public enum AccountStatus
     {

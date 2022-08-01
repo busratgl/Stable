@@ -13,7 +13,7 @@ namespace Stable.Business.Concrete.Helpers
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
-                Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
+                Subject = new ClaimsIdentity(new[]
                 {
                     new Claim("userId", userId.ToString())
                 }),
