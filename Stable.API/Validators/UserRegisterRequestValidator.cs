@@ -20,6 +20,5 @@ namespace Stable.API.Validators
             this.RuleFor(u => u.CurrencyTypeId).NotEmpty().InclusiveBetween(1, 6);
             this.RuleFor(u => u.AccountTypeId).NotEmpty().InclusiveBetween(1, 4);
         }
-
     }
 }
