@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Stable.Business.Concrete.Helpers;
-using Stable.Business.Requests;
+using Stable.Business.Concrete.Requests;
 
 namespace Stable.API.Validators
 {

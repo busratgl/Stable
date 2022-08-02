@@ -6,7 +6,6 @@ using Stable.Business.Concrete.Responses.CreateAccountDto;
 using Stable.Business.Concrete.Responses.GetMyAccountDto;
 using Stable.Business.Concrete.Responses.UserLoginDto;
 using Stable.Business.Concrete.Responses.UserRegisterDto;
-using Stable.Business.Requests;
 using Stable.Core.Utilities.Results.Concrete;
 using System.Linq;
 using System.Security.Claims;

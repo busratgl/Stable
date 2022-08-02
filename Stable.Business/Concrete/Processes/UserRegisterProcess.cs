@@ -3,7 +3,6 @@ using Stable.Business.Concrete.Constants;
 using Stable.Business.Concrete.Exceptions;
 using Stable.Business.Concrete.Extensions;
 using Stable.Business.Concrete.Responses.UserRegisterDto;
-using Stable.Business.Requests;
 using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 using Stable.Entity.Concrete;
 using Stable.Repository.Abstract;
@@ -11,6 +10,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Stable.Business.Concrete.Requests;
 
 namespace Stable.Business.Concrete.Processes
 {

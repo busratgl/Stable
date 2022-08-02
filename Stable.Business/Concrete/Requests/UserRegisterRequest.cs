@@ -1,7 +1,7 @@
 ﻿using System;
 using Stable.Core.Utilities.Results.ComplexTypes.Enums;
 
-namespace Stable.Business.Requests
+namespace Stable.Business.Concrete.Requests
 {
     public class UserRegisterRequest
     {
