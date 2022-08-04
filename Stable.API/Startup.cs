@@ -15,6 +15,7 @@ using Stable.Repository.Concrete;
 using Stable.Repository.Concrete.Context;
 using System.Collections.Generic;
 using System.Text;
+using Stable.Repository.Concrete.Repositories;
 
 namespace Stable.API
 {
@@ -30,8 +31,17 @@ namespace Stable.API
             services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
                                                                     .AllowAnyMethod()
                                                                      .AllowAnyHeader()));
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IBalanceRepository, BalanceRepository>();
+            services.AddScoped<IPasswordRepository, PasswordRepository>();
+            services.AddScoped<IIndividualUserRepository, IndividualUserRepository>();
+            services.AddScoped<ICorporateUserRepository, CorporateUserRepository>();
+            services.AddScoped<IAccountTypeRepository, AccountTypeRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IEmailRepository, EmailRepository>();
             services.AddScoped<StableDbContext>();
             services.AddScoped<ICacheService, RedisCacheService>();
 
