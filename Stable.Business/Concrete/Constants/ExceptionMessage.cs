@@ -15,5 +15,7 @@
         public static string AccountTypeAlreadyExists =
             "Oluşturmak istediğiniz hesap türünde hesabınız sistemimizde bulunmaktadır. İşleminize devam etmek istiyorsanız, lütfen başka bir hesap türü seçiniz.";
 
+        public static string RegisteredSuccessfully = "Bankamıza kaydınız başarıyla gerçekleşmiştir.";
+
     }
 }
