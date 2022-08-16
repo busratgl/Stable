@@ -20,7 +20,7 @@ namespace Stable.Repository.Concrete.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=TR-ADN-9332JL3\SQLEXPRESS; Database = Stable; Trusted_Connection = True; Connect Timeout = 30; MultipleActiveResultSets = True;");
+            optionsBuilder.UseSqlServer(@"Server=localhost,1433; Initial Catalog = Stable;User ID = sa;Password=52525252Bt!;MultipleActiveResultSets = False;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
